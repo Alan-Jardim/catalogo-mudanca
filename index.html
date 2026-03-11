@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatÃ¡logo de Itens Ã  Venda - MudanÃ§a</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #333;
+            --text-light: #666;
+            --green: #27ae60;
+            --red: #c0392b;
+            --blue: #2980b9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #34495e);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2em; margin-bottom: 8px; }
+        header p { opacity: 0.85; font-size: 1.1em; }
+        .header-stats {
+            display: flex; justify-content: center; gap: 30px; margin-top: 15px; flex-wrap: wrap;
+        }
+        .stat-badge {
+            background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 20px; font-size: 0.95em;
+        }
+        
+        .filters {
+            background: white; padding: 15px 20px; border-bottom: 1px solid #ddd;
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .filters button {
+            padding: 8px 16px; border: 2px solid #ddd; border-radius: 20px;
+            background: white; cursor: pointer; font-size: 0.9em; transition: all 0.2s;
+        }
+        .filters button:hover, .filters button.active {
+            border-color: var(--accent); background: var(--accent); color: white;
+        }
+        .filters input {
+            padding: 8px 16px; border: 2px solid #ddd; border-radius: 20px;
+            font-size: 0.9em; width: 250px; outline: none;
+        }
+        .filters input:focus { border-color: var(--accent); }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        .category-section { margin-bottom: 30px; }
+        .category-title {
+            font-size: 1.4em; color: var(--primary); padding: 10px 0;
+            border-bottom: 3px solid var(--accent); margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .category-icon { font-size: 1.3em; }
+        .category-count {
+            background: var(--accent); color: white; font-size: 0.6em;
+            padding: 2px 10px; border-radius: 12px; margin-left: auto;
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 15px;
+        }
+        
+        .item-card {
+            background: var(--card-bg); border-radius: 12px; padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .item-card:hover {
+            transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        
+        .item-num {
+            background: var(--primary); color: white; font-size: 0.75em;
+            padding: 2px 8px; border-radius: 10px; display: inline-block; width: fit-content;
+        }
+        .item-name { font-size: 1em; font-weight: 600; color: var(--primary); line-height: 1.3; }
+        
+        .price-section { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+        .price-sale {
+            font-size: 1.5em; font-weight: 700; color: var(--green);
+        }
+        .price-ref {
+            font-size: 0.85em; color: var(--text-light); text-decoration: line-through;
+        }
+        .discount-badge {
+            background: var(--red); color: white; font-size: 0.75em;
+            padding: 2px 8px; border-radius: 10px; font-weight: 600;
+        }
+        
+        .estado-badge {
+            display: inline-block; padding: 3px 10px; border-radius: 10px;
+            font-size: 0.8em; font-weight: 600;
+        }
+        .estado-bom { background: #d4edda; color: #155724; }
+        .estado-medio { background: #fff3cd; color: #856404; }
+        .estado-ruim { background: #f8d7da; color: #721c24; }
+        .estado-pendente { background: #e2e3e5; color: #383d41; }
+        
+        .btn-link {
+            display: inline-block; padding: 8px 16px; background: var(--accent);
+            color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em;
+            text-align: center; transition: background 0.2s; margin-top: auto;
+        }
+        .btn-link:hover { background: #d35400; }
+        .btn-disabled {
+            background: #ccc; cursor: default; pointer-events: none;
+        }
+        
+        .summary {
+            background: linear-gradient(135deg, var(--green), #2ecc71);
+            color: white; padding: 20px; border-radius: 12px; text-align: center;
+            margin: 30px 0;
+        }
+        .summary h2 { font-size: 1.5em; margin-bottom: 5px; }
+        .summary .total { font-size: 2.2em; font-weight: 700; }
+        
+        .legend {
+            background: white; padding: 15px 20px; border-radius: 12px; margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); font-size: 0.85em; color: var(--text-light);
+        }
+        .legend strong { color: var(--text); }
+        
+        footer {
+            text-align: center; padding: 20px; color: var(--text-light);
+            font-size: 0.85em; border-top: 1px solid #ddd; margin-top: 30px;
+        }
+        
+        .no-results { text-align: center; padding: 40px; color: var(--text-light); font-size: 1.1em; }
+        .hidden { display: none !important; }
+        
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.4em; }
+            .items-grid { grid-template-columns: 1fr; }
+            .filters { padding: 10px; }
+            .filters input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CatÃ¡logo de Itens Ã  Venda</h1>
+    <p>MudanÃ§a - Todos os itens em Ã³timo estado e com preÃ§os imperdÃ­veis!</p>
+    <div class="header-stats">
+        <span class="stat-badge" id="totalItems">17 itens disponÃ­veis</span>
+        <span class="stat-badge" id="totalValue">Valor total: R$ 24.306</span>
+        <span class="stat-badge">VersÃ£o preliminar</span>
+    </div>
+</header>
+
+<div class="filters">
+    <button class="active" onclick="filterCategory('all', this)">Todos</button>
+    <button onclick="filterCategory('EletrodomÃ©sticos', this)">EletrodomÃ©sticos</button>
+    <button onclick="filterCategory('EletrÃ´nicos', this)">EletrÃ´nicos</button>
+    <button onclick="filterCategory('MÃ³veis', this)">MÃ³veis</button>
+    <button onclick="filterCategory('Cozinha', this)">Cozinha</button>
+    <button onclick="filterCategory('Diversos', this)">Diversos</button>
+    <input type="text" id="searchInput" placeholder="Buscar item..." oninput="searchItems()">
+</div>
+
+<div class="container">
+    <div class="legend">
+        <strong>Como funciona o preÃ§o:</strong> Itens com preÃ§o de referÃªncia <em>usado</em> (estado bom/mÃ©dio) = preÃ§o do usado. 
+        Estado ruim = 80% do usado. Itens com referÃªncia de <em>novo</em>: bom = 75%, mÃ©dio = 60%, ruim = 40% do valor novo.
+    </div>
+    
+    <div id="catalogContent"></div>
+    
+    <div class="summary">
+        <h2>Valor Total do CatÃ¡logo</h2>
+        <div class="total" id="summaryTotal">R$ 24.306</div>
+        <p style="margin-top:5px; opacity:0.85;">17 itens â¢ VersÃ£o preliminar - mais itens serÃ£o adicionados</p>
+    </div>
+</div>
+
+<footer>
+    <p>CatÃ¡logo gerado em 11/03/2026 â¢ VersÃ£o preliminar â¢ PreÃ§os sujeitos a negociaÃ§Ã£o</p>
+    <p>Contato: alanrjardim@hotmail.com</p>
+</footer>
+
+<script>
+const items = [
+    // [num, categoria, descricao, precoVenda, precoRef, tipoRef, estado, link]
+    [1, "EletrodomÃ©sticos", "Geladeira Consul Frost Free CRM43NK 2 Portas Inox - 386L â 110V", 2229, 2229, "usado", "Bom", "https://www.mercadolivre.com.br/geladeira-com-freezer-consul-crm43n--capacidade-386l-inox/up/MLBU3791874372"],
+    [2, "EletrodomÃ©sticos", "Frigobar Midea 45L Inox 127V", 555, 740, "novo", "Bom", "https://www.casasbahia.com.br/frigobar-midea-preto-com-inox-45l-127v-60hz/p/1557418650"],
+    [3, "EletrodomÃ©sticos", "Lava e Seca LG VC5 11kg Branca CV3011WG4", 1720, 4299, "novo", "Ruim", "https://m.magazineluiza.com.br/lava-e-seca-lg-smart-vc4-11kg-branca-ai-dd-220v-cv5011wg4a/p/ag739cekaa/ed/ela1/"],
+    [4, "EletrodomÃ©sticos", "Lava-LouÃ§as Electrolux 8 ServiÃ§os Inox Compacta (LE08S) 220V", 1700, 1700, "usado", "Boa", "https://www.mercadolivre.com.br/lavaloucas-electrolux-8-servicos-inox-le08s-cor-prateado/up/MLBU3554047300"],
+    [5, "EletrodomÃ©sticos", "Micro-ondas Panasonic 34L Inox", 494, 494, "usado", "Boa", "https://produto.mercadolivre.com.br/MLB-6421911666-microondas-panasonic-style-3l-nn-st674srun-_JM"],
+    [6, "EletrodomÃ©sticos", "FogÃ£o Consul 5 Bocas Inox CFS5VAR Bivolt", 1336, 1781, "novo", "Boa", "https://www.mercadolivre.com.br/fogao-consul-5-bocas-cor-inox-com-botoes-removiveis--cfs5na/up/MLBU1424954377"],
+    [7, "EletrodomÃ©sticos", "Ar-Condicionado Philco Eco Inverter", 1467, 1956, "novo", "Boa", "https://www.amazon.com.br/Condicionado-Split-Wall-Philco-PAC9FC/dp/B0DVBPJJSL/"],
+    [9, "EletrodomÃ©sticos", "Ar-Condicionado Split Inverter 12000 BTU (Unid. 3)", 1619, 2159, "novo", "Pendente", ""],
+    [10, "EletrÃ´nicos", "Samsung Smart TV UHD 4K 75\"", 4125, 5500, "novo", "Boa", "https://www.samsung.com/br/tvs/uhd-4k-tv/u8600f-75-inch-crystal-uhd-4k-smart-tv-un75u8600fgxzd/"],
+    [13, "EletrÃ´nicos", "Smart TV Philco 32\" LED Roku TV", 674, 899, "novo", "Boa", "https://www.amazon.com.br/Smart-Philco-LED-Roku-PTV32G7PR2CGB/dp/B0DNLCBKS9"],
+    [14, "EletrÃ´nicos", "Apple Watch Series 7 45mm", 1300, 1300, "usado", "Boa", ""],
+    [15, "EletrÃ´nicos", "Soundbar LG com Subwoofer", 824, 1099, "novo", "Boa", "https://www.casasbahia.com.br/soundbar-lg-s40t-300w-rms-canais-2-1-bluetooth-5-3-ai-sound-pro-preto/p/55066933"],
+    [43, "MÃ³veis", "Mesa Jantar Branca Tampo Vidro/Laca", 1349, 1799, "novo", "", "https://www.magazineluiza.com.br/mesa-de-jantar-6-cadeiras-retangular-freijo-off-white-e-creme-dj-moveis-copenhague/p/238000200/mo/momj/"],
+    [56, "MÃ³veis", "SofÃ¡ 4 Lugares Connect RetrÃ¡til e ReclinÃ¡vel 2.50m", 1781, 2375, "novo", "", "https://www.pontofrio.com.br/sofa-4-lugares-retratil-e-reclinavel-maximo-250m-veludo-bege-bege/p/1569837398"],
+    [82, "Cozinha", "Panela PressÃ£o ElÃ©trica Electrolux Digital 6L PCC20 por Rita Lobo", 412, 549, "novo", "", "https://www.amazon.com.br/dp/B076HSQQ18"],
+    [115, "Diversos", "Tapete SÃ£o Carlos 150x200cm Herat Export Siena - Cinza", 359, 479, "novo", "", "https://www.casasbahia.com.br/tapete-herat-export-150x200-siena-92-56/p/1566021302"],
+    [116, "Diversos", "Poltrona de Massagem Louisiana com Puff Rivatti", 2362, 3149, "novo", "Boa", "https://www.amazon.com.br/Poltrona-Massagem-Apoio-Louisiana-Rivatti/dp/B07NRC7LS9"],
+];
+
+const categoryIcons = {
+    "EletrodomÃ©sticos": "ð ",
+    "EletrÃ´nicos": "ð±",
+    "BebÃª/Infantil": "ð¶",
+    "MÃ³veis": "ðï¸",
+    "Cozinha": "ð³",
+    "Academia": "ðª",
+    "Diversos": "ð¦",
+};
+
+let activeFilter = 'all';
+
+function getEstadoClass(estado) {
+    if (!estado) return '';
+    const e = estado.toLowerCase();
+    if (e === 'bom' || e === 'boa') return 'estado-bom';
+    if (e === 'mÃ©dio' || e === 'mÃ©dia' || e === 'medio') return 'estado-medio';
+    if (e === 'ruim') return 'estado-ruim';
+    return 'estado-pendente';
+}
+
+function formatPrice(val) {
+    return 'R$ ' + val.toLocaleString('pt-BR');
+}
+
+function calcDiscount(sale, ref) {
+    if (ref <= 0 || sale >= ref) return 0;
+    return Math.round((1 - sale/ref) * 100);
+}
+
+function renderCatalog(filteredItems) {
+    const container = document.getElementById('catalogContent');
+    if (filteredItems.length === 0) {
+        container.innerHTML = '<div class="no-results">Nenhum item encontrado.</div>';
+        return;
+    }
+    
+    // Group by category
+    const groups = {};
+    filteredItems.forEach(item => {
+        const cat = item[1];
+        if (!groups[cat]) groups[cat] = [];
+        groups[cat].push(item);
+    });
+    
+    let html = '';
+    for (const [cat, catItems] of Object.entries(groups)) {
+        const icon = categoryIcons[cat] || 'ð¦';
+        html += `<div class="category-section" data-category="${cat}">`;
+        html += `<div class="category-title"><span class="category-icon">${icon}</span>${cat}<span class="category-count">${catItems.length} ${catItems.length === 1 ? 'item' : 'itens'}</span></div>`;
+        html += '<div class="items-grid">';
+        
+        catItems.forEach(item => {
+            const [num, , desc, price, refPrice, refType, estado, link] = item;
+            const discount = calcDiscount(price, refPrice);
+            const estadoClass = getEstadoClass(estado);
+            
+            html += `<div class="item-card" data-name="${desc.toLowerCase()}" data-cat="${cat}">`;
+            html += `<div><span class="item-num">#${num}</span></div>`;
+            html += `<div class="item-name">${desc}</div>`;
+            
+            if (estado) {
+                html += `<span class="estado-badge ${estadoClass}">Estado: ${estado}</span>`;
+            }
+            
+            html += '<div class="price-section">';
+            html += `<span class="price-sale">${formatPrice(price)}</span>`;
+            if (discount > 0) {
+                html += `<span class="price-ref">${formatPrice(refPrice)} ${refType}</span>`;
+                html += `<span class="discount-badge">-${discount}%</span>`;
+            } else if (refType === 'usado') {
+                html += `<span style="font-size:0.8em;color:#666;">preÃ§o de usado</span>`;
+            }
+            html += '</div>';
+            
+            if (link) {
+                html += `<a href="${link}" target="_blank" class="btn-link">Ver na Internet</a>`;
+            } else {
+                html += `<span class="btn-link btn-disabled">Link pendente</span>`;
+            }
+            
+            html += '</div>';
+        });
+        
+        html += '</div></div>';
+    }
+    
+    container.innerHTML = html;
+}
+
+function filterCategory(cat, btn) {
+    activeFilter = cat;
+    document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    applyFilters();
+}
+
+function searchItems() {
+    applyFilters();
+}
+
+function applyFilters() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    let filtered = items;
+    
+    if (activeFilter !== 'all') {
+        filtered = filtered.filter(i => i[1] === activeFilter);
+    }
+    if (search) {
+        filtered = filtered.filter(i => i[2].toLowerCase().includes(search));
+    }
+    
+    renderCatalog(filtered);
+}
+
+// Initial render
+renderCatalog(items);
+</script>
+
+</body>
+</html>
