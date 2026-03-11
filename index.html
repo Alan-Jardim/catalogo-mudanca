@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CatÃ¡logo de Itens Ã  Venda - MudanÃ§a</title>
+    <title>Catálogo de Itens à Venda - Mudança</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -151,20 +151,20 @@
 <body>
 
 <header>
-    <h1>CatÃ¡logo de Itens Ã  Venda</h1>
-    <p>MudanÃ§a - Todos os itens em Ã³timo estado e com preÃ§os imperdÃ­veis!</p>
+    <h1>Catálogo de Itens à Venda</h1>
+    <p>Mudança - Todos os itens em ótimo estado e com preços imperdíveis!</p>
     <div class="header-stats">
-        <span class="stat-badge" id="totalItems">17 itens disponÃ­veis</span>
+        <span class="stat-badge" id="totalItems">17 itens disponíveis</span>
         <span class="stat-badge" id="totalValue">Valor total: R$ 24.306</span>
-        <span class="stat-badge">VersÃ£o preliminar</span>
+        <span class="stat-badge">Versão preliminar</span>
     </div>
 </header>
 
 <div class="filters">
     <button class="active" onclick="filterCategory('all', this)">Todos</button>
-    <button onclick="filterCategory('EletrodomÃ©sticos', this)">EletrodomÃ©sticos</button>
-    <button onclick="filterCategory('EletrÃ´nicos', this)">EletrÃ´nicos</button>
-    <button onclick="filterCategory('MÃ³veis', this)">MÃ³veis</button>
+    <button onclick="filterCategory('Eletrodomésticos', this)">Eletrodomésticos</button>
+    <button onclick="filterCategory('Eletrônicos', this)">Eletrônicos</button>
+    <button onclick="filterCategory('Móveis', this)">Móveis</button>
     <button onclick="filterCategory('Cozinha', this)">Cozinha</button>
     <button onclick="filterCategory('Diversos', this)">Diversos</button>
     <input type="text" id="searchInput" placeholder="Buscar item..." oninput="searchItems()">
@@ -172,54 +172,54 @@
 
 <div class="container">
     <div class="legend">
-        <strong>Como funciona o preÃ§o:</strong> Itens com preÃ§o de referÃªncia <em>usado</em> (estado bom/mÃ©dio) = preÃ§o do usado. 
-        Estado ruim = 80% do usado. Itens com referÃªncia de <em>novo</em>: bom = 75%, mÃ©dio = 60%, ruim = 40% do valor novo.
+        <strong>Como funciona o preço:</strong> Itens com preço de referência <em>usado</em> (estado bom/médio) = preço do usado. 
+        Estado ruim = 80% do usado. Itens com referência de <em>novo</em>: bom = 75%, médio = 60%, ruim = 40% do valor novo.
     </div>
     
     <div id="catalogContent"></div>
     
     <div class="summary">
-        <h2>Valor Total do CatÃ¡logo</h2>
+        <h2>Valor Total do Catálogo</h2>
         <div class="total" id="summaryTotal">R$ 24.306</div>
-        <p style="margin-top:5px; opacity:0.85;">17 itens â¢ VersÃ£o preliminar - mais itens serÃ£o adicionados</p>
+        <p style="margin-top:5px; opacity:0.85;">17 itens • Versão preliminar - mais itens serão adicionados</p>
     </div>
 </div>
 
 <footer>
-    <p>CatÃ¡logo gerado em 11/03/2026 â¢ VersÃ£o preliminar â¢ PreÃ§os sujeitos a negociaÃ§Ã£o</p>
+    <p>Catálogo gerado em 11/03/2026 • Versão preliminar • Preços sujeitos a negociação</p>
     <p>Contato: alanrjardim@hotmail.com</p>
 </footer>
 
 <script>
 const items = [
     // [num, categoria, descricao, precoVenda, precoRef, tipoRef, estado, link]
-    [1, "EletrodomÃ©sticos", "Geladeira Consul Frost Free CRM43NK 2 Portas Inox - 386L â 110V", 2229, 2229, "usado", "Bom", "https://www.mercadolivre.com.br/geladeira-com-freezer-consul-crm43n--capacidade-386l-inox/up/MLBU3791874372"],
-    [2, "EletrodomÃ©sticos", "Frigobar Midea 45L Inox 127V", 555, 740, "novo", "Bom", "https://www.casasbahia.com.br/frigobar-midea-preto-com-inox-45l-127v-60hz/p/1557418650"],
-    [3, "EletrodomÃ©sticos", "Lava e Seca LG VC5 11kg Branca CV3011WG4", 1720, 4299, "novo", "Ruim", "https://m.magazineluiza.com.br/lava-e-seca-lg-smart-vc4-11kg-branca-ai-dd-220v-cv5011wg4a/p/ag739cekaa/ed/ela1/"],
-    [4, "EletrodomÃ©sticos", "Lava-LouÃ§as Electrolux 8 ServiÃ§os Inox Compacta (LE08S) 220V", 1700, 1700, "usado", "Boa", "https://www.mercadolivre.com.br/lavaloucas-electrolux-8-servicos-inox-le08s-cor-prateado/up/MLBU3554047300"],
-    [5, "EletrodomÃ©sticos", "Micro-ondas Panasonic 34L Inox", 494, 494, "usado", "Boa", "https://produto.mercadolivre.com.br/MLB-6421911666-microondas-panasonic-style-3l-nn-st674srun-_JM"],
-    [6, "EletrodomÃ©sticos", "FogÃ£o Consul 5 Bocas Inox CFS5VAR Bivolt", 1336, 1781, "novo", "Boa", "https://www.mercadolivre.com.br/fogao-consul-5-bocas-cor-inox-com-botoes-removiveis--cfs5na/up/MLBU1424954377"],
-    [7, "EletrodomÃ©sticos", "Ar-Condicionado Philco Eco Inverter", 1467, 1956, "novo", "Boa", "https://www.amazon.com.br/Condicionado-Split-Wall-Philco-PAC9FC/dp/B0DVBPJJSL/"],
-    [9, "EletrodomÃ©sticos", "Ar-Condicionado Split Inverter 12000 BTU (Unid. 3)", 1619, 2159, "novo", "Pendente", ""],
-    [10, "EletrÃ´nicos", "Samsung Smart TV UHD 4K 75\"", 4125, 5500, "novo", "Boa", "https://www.samsung.com/br/tvs/uhd-4k-tv/u8600f-75-inch-crystal-uhd-4k-smart-tv-un75u8600fgxzd/"],
-    [13, "EletrÃ´nicos", "Smart TV Philco 32\" LED Roku TV", 674, 899, "novo", "Boa", "https://www.amazon.com.br/Smart-Philco-LED-Roku-PTV32G7PR2CGB/dp/B0DNLCBKS9"],
-    [14, "EletrÃ´nicos", "Apple Watch Series 7 45mm", 1300, 1300, "usado", "Boa", ""],
-    [15, "EletrÃ´nicos", "Soundbar LG com Subwoofer", 824, 1099, "novo", "Boa", "https://www.casasbahia.com.br/soundbar-lg-s40t-300w-rms-canais-2-1-bluetooth-5-3-ai-sound-pro-preto/p/55066933"],
-    [43, "MÃ³veis", "Mesa Jantar Branca Tampo Vidro/Laca", 1349, 1799, "novo", "", "https://www.magazineluiza.com.br/mesa-de-jantar-6-cadeiras-retangular-freijo-off-white-e-creme-dj-moveis-copenhague/p/238000200/mo/momj/"],
-    [56, "MÃ³veis", "SofÃ¡ 4 Lugares Connect RetrÃ¡til e ReclinÃ¡vel 2.50m", 1781, 2375, "novo", "", "https://www.pontofrio.com.br/sofa-4-lugares-retratil-e-reclinavel-maximo-250m-veludo-bege-bege/p/1569837398"],
-    [82, "Cozinha", "Panela PressÃ£o ElÃ©trica Electrolux Digital 6L PCC20 por Rita Lobo", 412, 549, "novo", "", "https://www.amazon.com.br/dp/B076HSQQ18"],
-    [115, "Diversos", "Tapete SÃ£o Carlos 150x200cm Herat Export Siena - Cinza", 359, 479, "novo", "", "https://www.casasbahia.com.br/tapete-herat-export-150x200-siena-92-56/p/1566021302"],
+    [1, "Eletrodomésticos", "Geladeira Consul Frost Free CRM43NK 2 Portas Inox - 386L – 110V", 2229, 2229, "usado", "Bom", "https://www.mercadolivre.com.br/geladeira-com-freezer-consul-crm43n--capacidade-386l-inox/up/MLBU3791874372"],
+    [2, "Eletrodomésticos", "Frigobar Midea 45L Inox 127V", 555, 740, "novo", "Bom", "https://www.casasbahia.com.br/frigobar-midea-preto-com-inox-45l-127v-60hz/p/1557418650"],
+    [3, "Eletrodomésticos", "Lava e Seca LG VC5 11kg Branca CV3011WG4", 1720, 4299, "novo", "Ruim", "https://m.magazineluiza.com.br/lava-e-seca-lg-smart-vc4-11kg-branca-ai-dd-220v-cv5011wg4a/p/ag739cekaa/ed/ela1/"],
+    [4, "Eletrodomésticos", "Lava-Louças Electrolux 8 Serviços Inox Compacta (LE08S) 220V", 1700, 1700, "usado", "Boa", "https://www.mercadolivre.com.br/lavaloucas-electrolux-8-servicos-inox-le08s-cor-prateado/up/MLBU3554047300"],
+    [5, "Eletrodomésticos", "Micro-ondas Panasonic 34L Inox", 494, 494, "usado", "Boa", "https://produto.mercadolivre.com.br/MLB-6421911666-microondas-panasonic-style-3l-nn-st674srun-_JM"],
+    [6, "Eletrodomésticos", "Fogão Consul 5 Bocas Inox CFS5VAR Bivolt", 1336, 1781, "novo", "Boa", "https://www.mercadolivre.com.br/fogao-consul-5-bocas-cor-inox-com-botoes-removiveis--cfs5na/up/MLBU1424954377"],
+    [7, "Eletrodomésticos", "Ar-Condicionado Philco Eco Inverter", 1467, 1956, "novo", "Boa", "https://www.amazon.com.br/Condicionado-Split-Wall-Philco-PAC9FC/dp/B0DVBPJJSL/"],
+    [9, "Eletrodomésticos", "Ar-Condicionado Split Inverter 12000 BTU (Unid. 3)", 1619, 2159, "novo", "Pendente", ""],
+    [10, "Eletrônicos", "Samsung Smart TV UHD 4K 75\"", 4125, 5500, "novo", "Boa", "https://www.samsung.com/br/tvs/uhd-4k-tv/u8600f-75-inch-crystal-uhd-4k-smart-tv-un75u8600fgxzd/"],
+    [13, "Eletrônicos", "Smart TV Philco 32\" LED Roku TV", 674, 899, "novo", "Boa", "https://www.amazon.com.br/Smart-Philco-LED-Roku-PTV32G7PR2CGB/dp/B0DNLCBKS9"],
+    [14, "Eletrônicos", "Apple Watch Series 7 45mm", 1300, 1300, "usado", "Boa", ""],
+    [15, "Eletrônicos", "Soundbar LG com Subwoofer", 824, 1099, "novo", "Boa", "https://www.casasbahia.com.br/soundbar-lg-s40t-300w-rms-canais-2-1-bluetooth-5-3-ai-sound-pro-preto/p/55066933"],
+    [43, "Móveis", "Mesa Jantar Branca Tampo Vidro/Laca", 1349, 1799, "novo", "", "https://www.magazineluiza.com.br/mesa-de-jantar-6-cadeiras-retangular-freijo-off-white-e-creme-dj-moveis-copenhague/p/238000200/mo/momj/"],
+    [56, "Móveis", "Sofá 4 Lugares Connect Retrátil e Reclinável 2.50m", 1781, 2375, "novo", "", "https://www.pontofrio.com.br/sofa-4-lugares-retratil-e-reclinavel-maximo-250m-veludo-bege-bege/p/1569837398"],
+    [82, "Cozinha", "Panela Pressão Elétrica Electrolux Digital 6L PCC20 por Rita Lobo", 412, 549, "novo", "", "https://www.amazon.com.br/dp/B076HSQQ18"],
+    [115, "Diversos", "Tapete São Carlos 150x200cm Herat Export Siena - Cinza", 359, 479, "novo", "", "https://www.casasbahia.com.br/tapete-herat-export-150x200-siena-92-56/p/1566021302"],
     [116, "Diversos", "Poltrona de Massagem Louisiana com Puff Rivatti", 2362, 3149, "novo", "Boa", "https://www.amazon.com.br/Poltrona-Massagem-Apoio-Louisiana-Rivatti/dp/B07NRC7LS9"],
 ];
 
 const categoryIcons = {
-    "EletrodomÃ©sticos": "ð ",
-    "EletrÃ´nicos": "ð±",
-    "BebÃª/Infantil": "ð¶",
-    "MÃ³veis": "ðï¸",
-    "Cozinha": "ð³",
-    "Academia": "ðª",
-    "Diversos": "ð¦",
+    "Eletrodomésticos": "🏠",
+    "Eletrônicos": "📱",
+    "Bebê/Infantil": "👶",
+    "Móveis": "🛋️",
+    "Cozinha": "🍳",
+    "Academia": "💪",
+    "Diversos": "📦",
 };
 
 let activeFilter = 'all';
@@ -228,7 +228,7 @@ function getEstadoClass(estado) {
     if (!estado) return '';
     const e = estado.toLowerCase();
     if (e === 'bom' || e === 'boa') return 'estado-bom';
-    if (e === 'mÃ©dio' || e === 'mÃ©dia' || e === 'medio') return 'estado-medio';
+    if (e === 'médio' || e === 'média' || e === 'medio') return 'estado-medio';
     if (e === 'ruim') return 'estado-ruim';
     return 'estado-pendente';
 }
@@ -259,7 +259,7 @@ function renderCatalog(filteredItems) {
     
     let html = '';
     for (const [cat, catItems] of Object.entries(groups)) {
-        const icon = categoryIcons[cat] || 'ð¦';
+        const icon = categoryIcons[cat] || '📦';
         html += `<div class="category-section" data-category="${cat}">`;
         html += `<div class="category-title"><span class="category-icon">${icon}</span>${cat}<span class="category-count">${catItems.length} ${catItems.length === 1 ? 'item' : 'itens'}</span></div>`;
         html += '<div class="items-grid">';
@@ -283,7 +283,7 @@ function renderCatalog(filteredItems) {
                 html += `<span class="price-ref">${formatPrice(refPrice)} ${refType}</span>`;
                 html += `<span class="discount-badge">-${discount}%</span>`;
             } else if (refType === 'usado') {
-                html += `<span style="font-size:0.8em;color:#666;">preÃ§o de usado</span>`;
+                html += `<span style="font-size:0.8em;color:#666;">preço de usado</span>`;
             }
             html += '</div>';
             
