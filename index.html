@@ -1,153 +1,796 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo de Mudança - Família Jardim</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;color:#333}
-.header{background:linear-gradient(135deg,#2c3e50,#3498db);color:#fff;padding:20px;text-align:center}
-.header h1{font-size:1.8em;margin-bottom:5px}
-.header p{opacity:.85;font-size:.95em}
-.controls{background:#fff;padding:15px 20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:10}
-.controls input,.controls select{padding:10px 15px;border:1px solid #ddd;border-radius:8px;font-size:.95em}
-.controls input{flex:1;min-width:200px;max-width:400px}
-.cat-section{max-width:1200px;margin:0 auto;padding:0 20px}
-.cat-title{background:linear-gradient(135deg,#1d3557,#457b9d);color:#fff;padding:14px 20px;margin:25px 0 15px;border-radius:10px;font-size:1.15em;font-weight:700;display:flex;align-items:center;gap:10px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
-.cat-title .cat-icon{font-size:1.3em}
-.cat-title .cat-count{background:rgba(255,255,255,.2);padding:2px 10px;border-radius:12px;font-size:.8em;margin-left:auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;max-width:1200px;margin:0 auto;padding:0 20px 20px}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.15)}
-.card-body{padding:15px;flex:1;display:flex;flex-direction:column}
-.card-body h3{font-size:1.1em;margin-bottom:8px;color:#2c3e50}
-.card-body .desc{font-size:.85em;color:#666;margin-bottom:10px;flex:1}
-.card-body .price{font-size:1.4em;font-weight:700;color:#e74c3c}
-.card-body .ref{font-size:.75em;color:#999;margin-top:3px}
-.card-body .cat-badge{display:inline-block;background:#ecf0f1;color:#7f8c8d;padding:3px 10px;border-radius:12px;font-size:.75em;margin-bottom:8px}
-.card-body .estado-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.75em;margin-left:5px}
-.estado-bom{background:#d4edda;color:#155724}
-.estado-medio{background:#fff3cd;color:#856404}
-.estado-ruim{background:#f8d7da;color:#721c24}
-.btn-internet{display:inline-block;margin-top:10px;background:#ff9900;color:#111;font-weight:700;text-decoration:none;padding:8px 16px;border-radius:6px;font-size:.85em;transition:.2s;text-align:center}
-.btn-internet:hover{background:#e68a00;color:#000}
-.num-badge{background:#3498db;color:#fff;display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;font-size:.8em;font-weight:700;margin-right:8px;vertical-align:middle}
-.footer{text-align:center;padding:20px;color:#999;font-size:.8em}
-.no-results{text-align:center;padding:40px;color:#999;font-size:1.1em;grid-column:1/-1}
-.summary{text-align:center;padding:10px;background:#eaf2f8;color:#2c3e50;font-size:.9em}
-@media(max-width:600px){.grid{grid-template-columns:1fr;padding:0 10px 10px}.header h1{font-size:1.3em}.cat-section{padding:0 10px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Mudança - Itens disponíveis para venda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        /* Summary Bar */
+        .summary-bar {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-item-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .summary-item-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        /* Controls Container */
+        .controls-container {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 15px 20px;
+            margin: 0 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: white;
+            transition: border-color 0.3s;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        /* Category Group */
+        .category-group {
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: none;
+            color: #fff;
+        }
+
+        .category-emoji {
+            font-size: 1.8em;
+        }
+
+        .category-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #fff;
+            flex: 1;
+        }
+
+        .category-badge {
+            background-color: rgba(255,255,255,0.25);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        /* Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3498db;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-category {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .badge-state {
+            background-color: #27ae60;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .badge-state.medio {
+            background-color: #f39c12;
+        }
+
+        .badge-state.ruim {
+            background-color: #e74c3c;
+        }
+
+        .card-content {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .card-content p {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            padding: 15px;
+            border-top: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-price {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .card-price.pending {
+            color: #f39c12;
+        }
+
+        .card-price.sold {
+            color: #95a5a6;
+            text-decoration: line-through;
+        }
+
+        /* VENDIDO Overlay */
+        .card.sold {
+            opacity: 0.85;
+        }
+
+        .card.sold::before {
+            content: 'VENDIDO';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-size: 3em;
+            font-weight: 900;
+            color: rgba(231, 76, 60, 0.4);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 10;
+            letter-spacing: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-top: 40px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .controls-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                min-width: auto;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+
+            .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+
+            .summary-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Hidden class for filtering */
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<div class="header">
-<h1>Catálogo de Mudança</h1>
-<p>Família Jardim — Itens disponíveis para venda</p>
-</div>
-<div class="summary" id="summary"></div>
-<div class="controls">
-<input type="text" id="search" placeholder="Buscar item..." oninput="filterItems()">
-<select id="catFilter" onchange="filterItems()">
-<option value="">Todas as categorias</option>
-<option value="Bebê/Infantil">Bebê/Infantil</option>
-<option value="Cozinha">Cozinha</option>
-<option value="Eletrodomésticos">Eletrodomésticos</option>
-<option value="Eletrônicos">Eletrônicos</option>
-<option value="Móveis">Móveis</option>
-</select>
-</div>
-<div id="content"></div>
-<div class="footer">Atualizado em Março 2026 · Contato: alanrjardim@hotmail.com</div>
-<script>
-const items=[
-{"num": 1, "cat": "Eletrodomésticos", "nome": "Geladeira", "desc": "Consul Frost Free CRM43NK com 2 Portas Inox - 386 L – 110V", "pv": 2230, "tipo_ref": "USADO", "preco_ref": 2229.0, "estado": "bom", "link": "https://www.mercadolivre.com.br/geladeira-com-freezer-consul-crm43n--capacidade-386l-inox/up/MLBU3791874372"},
-{"num": 2, "cat": "Eletrodomésticos", "nome": "Frigobar", "desc": "rigobr Midea 45L Inox 127V", "pv": 520, "tipo_ref": "NOVO", "preco_ref": 740.0, "estado": "bom", "link": "https://www.casasbahia.com.br/frigobar-midea-preto-com-inox-45l-127v-60hz/p/1557418650?utm_medium=Cpc&utm_source=GP_PLA&IdSku=1557418650&idLojista=22161&tipoLojista=3P&gclsrc=aw.ds&&utm_campaign=cb_mkp_gg_shopping_tudo&gad_source=1&gad_campaignid=23330756621&gbraid=0AAAAADtAamjCG0Oy5safv7VsfL6n7rJ21&gclid=EAIaIQobChMI8tvswaqYkwMVUgVECB2uETrVEAQYAiABEgJu8vD_BwE"},
-{"num": 3, "cat": "Eletrodomésticos", "nome": "Máquina de Lavar e Secar", "desc": "LG VC5 11kg Branca CV3011WG4", "pv": 1720, "tipo_ref": "NOVO", "preco_ref": 4299.0, "estado": "ruim", "link": "https://m.magazineluiza.com.br/lava-e-seca-lg-smart-vc4-11kg-branca-ai-dd-220v-cv5011wg4a/p/ag739cekaa/ed/ela1/?seller_id=excellenceshop"},
-{"num": 4, "cat": "Eletrodomésticos", "nome": "Lava-Louças", "desc": "Electrolux 8 Serviços Inox Compacta com Programa Eco (LE08S) 220V", "pv": 1700, "tipo_ref": "USADO", "preco_ref": 1700.0, "estado": "bom", "link": "https://www.mercadolivre.com.br/lavaloucas-electrolux-8-servicos-inox-le08s-cor-prateado/up/MLBU3554047300#polycard_client=search-desktop&search_layout=grid&position=9&type=product&tracking_id=6a7b58c8-00d0-4ab4-8ddb-5532d3ca9b02&wid=MLB4296354727&sid=search"},
-{"num": 5, "cat": "Eletrodomésticos", "nome": "Microondas", "desc": "Micro-ondas Panasonic 34L Inox", "pv": 490, "tipo_ref": "USADO", "preco_ref": 494.0, "estado": "bom", "link": "https://produto.mercadolivre.com.br/MLB-6421911666-microondas-panasonic-style-3l-nn-st674srun-_JM?searchVariation=197938809727#polycard_client=search-desktop&searchVariation=197938809727&search_layout=grid&position=42&type=item&tracking_id=92f01474-c00c-4698-84ca-a7b33931ef0a"},
-{"num": 6, "cat": "Eletrodomésticos", "nome": "Fogão", "desc": "Consul 5 Bocas Inox CFS5VAR Bivolt", "pv": 1250, "tipo_ref": "NOVO", "preco_ref": 1781.0, "estado": "bom", "link": "https://www.mercadolivre.com.br/fogao-consul-5-bocas-cor-inox-com-botoes-removiveis--cfs5na/up/MLBU1424954377#polycard_client=search-desktop&search_layout=grid&position=15&type=product&tracking_id=b5518638-0e05-4d87-a668-331ac247677e&wid=MLB2748839188&sid=search"},
-{"num": 7, "cat": "Eletrodomésticos", "nome": "Ar-Condicionado", "desc": "Philco Eco Inverter", "pv": 1370, "tipo_ref": "NOVO", "preco_ref": 1956.0, "estado": "bom", "link": "https://www.amazon.com.br/Condicionado-Split-Wall-Philco-PAC9FC/dp/B0DVBPJJSL/ref=asc_df_B0DVBPJJSL?mcid=7c89ebf8b90835ef84533e9f09a4fafd&tag=googleshopp00-20&linkCode=df0&hvadid=709968341215&hvpos=&hvnetw=g&hvrand=14186107987644641080&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001571&hvtargid=pla-2437259453693&psc=1&language=pt_BR&gad_source=1"},
-{"num": 8, "cat": "Eletrodomésticos", "nome": "Ar-Condicionado", "desc": "Samsung Digital Inverter 8 Polos 9000 BTUs Frio AR09MVSPBGMXAZ", "pv": 1100, "tipo_ref": "USADO", "preco_ref": 1100.0, "estado": "bom", "link": "https://www.mercadolivre.com.br/ar-condicionado-split-samsung-9000-btus-inverter-frio-220v/up/MLBU3745635616#polycard_client=search-desktop&search_layout=grid&position=20&type=product&tracking_id=f71014e6-d226-497c-ab51-6230f58a3000&wid=MLB6182271940&sid=search"},
-{"num": 10, "cat": "Eletrônicos", "nome": "Televisão", "desc": "Samsung UHD 4K 75\" Crystal 4K UN75AU7700GXZD", "pv": 3850, "tipo_ref": "NOVO", "preco_ref": 5500.0, "estado": "bom", "link": "https://www.samsung.com/br/tvs/uhd-4k-tv/u8600f-75-inch-crystal-uhd-4k-smart-tv-un75u8600fgxzd/"},
-{"num": 11, "cat": "Eletrônicos", "nome": "Televisão", "desc": "Philips LED 50\" UHD 4K 50PUG6513", "pv": 1200, "tipo_ref": "NOVO", "preco_ref": 1999.0, "estado": "média", "link": "https://www.amazon.com.br/PHILIPS-Smart-50PUG7300-Comando-Bluetooth/dp/B0FPBPX7WF/ref=asc_df_B0FPBPX7WF?mcid=f2adc547ae9d3ff69181b30bb20abf93&tag=googleshopp00-20&linkCode=df0&hvadid=709964502896&hvpos=&hvnetw=g&hvrand=1850221224800177862&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001571&hvtargid=pla-2449667478946&psc=1&language=pt_BR&gad_source=1"},
-{"num": 12, "cat": "Eletrônicos", "nome": "Televisão", "desc": "Philco 32\" LED Roku TV PTV32G7PR2CGB", "pv": 630, "tipo_ref": "NOVO", "preco_ref": 899.0, "estado": "bom", "link": "https://www.amazon.com.br/Smart-Philco-LED-Roku-PTV32G7PR2CGB/dp/B0DNLCBKS9"},
-{"num": 13, "cat": "Eletrônicos", "nome": "Relógio", "desc": "Apple Watch Series 7 45mm", "pv": 1300, "tipo_ref": "USADO", "preco_ref": 1300.0, "estado": "bom", "link": "Apple Watch Series 7 45mm"},
-{"num": 14, "cat": "Eletrônicos", "nome": "Soundbar", "desc": "LG com Subwoofer", "pv": 770, "tipo_ref": "NOVO", "preco_ref": 1099.0, "estado": "bom", "link": "https://www.casasbahia.com.br/soundbar-lg-s40t-300w-rms-canais-2-1-bluetooth-5-3-ai-sound-pro-preto/p/55066933?utm_medium=Cpc&utm_source=GP_PLA&IdSku=55066933&idLojista=10037&tipoLojista=1P&gclsrc=aw.ds&&utm_campaign=cb_b2c_gg_shopping_apostas&gad_source=1&gad_campaignid=22327478871&gbraid=0AAAAADtAamiokucVxCLSZf0FM0CYeQHMa&gclid=EAIaIQobChMIp775ybeYkwMV00BIAB2-RBWSEAQYCCABEgJECvD_BwE"},
-{"num": 16, "cat": "Eletrônicos", "nome": "Impressora", "desc": "HP DeskJet InkAdvantage 2774", "pv": 430, "tipo_ref": "NOVO", "preco_ref": 611.0, "estado": "bom", "link": "https://www.mercadolivre.com.br/impressora-multifuncional-cor-hp-deskjet-ink-advantage-2774/p/MLB17509710#polycard_client=search-desktop&search_layout=grid&position=2&type=product&tracking_id=aa52aca2-0009-4209-8ee6-d1a918eb080f&wid=MLB4044316637&sid=search"},
-{"num": 20, "cat": "Bebê/Infantil", "nome": "Carrinho, Bebê Conforto e Moisés", "desc": "Safety 1st Travel System Magnific 5 em 1 (Unidade 1)", "pv": 1200, "tipo_ref": "NOVO", "preco_ref": 2999.0, "estado": "ruim", "link": "https://www.amazon.com.br/Safety-1st-Travel-System-Magnific/dp/B0CRZ92M2S?th=1"},
-{"num": 21, "cat": "Bebê/Infantil", "nome": "Carrinho, Bebê Conforto e Moisés", "desc": "Safety 1st Travel System Magnific 5 em 1 (Unidade 2)", "pv": 1800, "tipo_ref": "NOVO", "preco_ref": 2999.0, "estado": "médio", "link": "https://www.amazon.com.br/Safety-1st-Travel-System-Magnific/dp/B0CRZ92M2S?th=1"},
-{"num": 22, "cat": "Bebê/Infantil", "nome": "Berço", "desc": "Safety 1st Side by Side (Unidade 1)", "pv": 640, "tipo_ref": "NOVO", "preco_ref": 918.0, "estado": "bom", "link": "https://www.amazon.com.br/dp/B07BYWNSLY?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1"},
-{"num": 23, "cat": "Bebê/Infantil", "nome": "Berço", "desc": "Safety 1st Side by Side (Unidade 2)", "pv": 640, "tipo_ref": "NOVO", "preco_ref": 918.0, "estado": "bom", "link": "https://www.amazon.com.br/dp/B07BYWNSLY?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1"},
-{"num": 24, "cat": "Bebê/Infantil", "nome": "Berço", "desc": "Portátil Desmontável (Unidade 1)", "pv": 240, "tipo_ref": "NOVO", "preco_ref": 349.0, "estado": "bom", "link": "amazon.com.br/dp/B0FM9SBK4K?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1"},
-{"num": 25, "cat": "Bebê/Infantil", "nome": "Berço", "desc": "Portátil Desmontável (Unidade 2)", "pv": 240, "tipo_ref": "NOVO", "preco_ref": 349.0, "estado": "bom", "link": "amazon.com.br/dp/B0FM9SBK4K?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1"},
-{"num": 29, "cat": "Bebê/Infantil", "nome": "Cadeira de Bebê", "desc": "Cadeira de Descanso e Balanço para Bebê Bliss Baby Style com Música, Mosquiteiro e Controle Remoto", "pv": 410, "tipo_ref": "NOVO", "preco_ref": 585.0, "estado": "", "link": "amazon.com.br/dp/B0DDVP2W3M?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1"},
-{"num": 39, "cat": "Móveis", "nome": "Mesa de Jantar", "desc": "Mesa Jantar Branca Tampo Vidro/Laca", "pv": 1260, "tipo_ref": "NOVO", "preco_ref": 1799.0, "estado": "bom", "link": "https://www.magazineluiza.com.br/mesa-de-jantar-6-cadeiras-retangular-freijo-off-white-e-creme-dj-moveis-copenhague/p/238000200/mo/momj/?seller_id=magazineluiza&srsltid=AfmBOooPk8nNdvCgDhImYjIDsCVYjn4zQcgtW71ZNHUHR_wHPYtlt38g7sI"},
-{"num": 40, "cat": "Móveis", "nome": "Poltrona", "desc": "Cadeira de Amamentação para Mamãe Balanço com Puff -Linho Ds Home", "pv": 740, "tipo_ref": "NOVO", "preco_ref": 1060.0, "estado": "bom", "link": "https://www.amazon.com.br/dp/B0CYCFKJ9R?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_3"},
-{"num": 43, "cat": "Móveis", "nome": "Cama", "desc": "Colchão Magnético Kenko Premium Casal c/ Massagem Bluetooth King Size", "pv": 5340, "tipo_ref": "NOVO", "preco_ref": 8900.0, "estado": "médio", "link": "https://www.kenkopremium.com/colchao-kenko-premium-plus-controlada-vibro-king-size-193x2-03x28cm"},
-{"num": 45, "cat": "Móveis", "nome": "Sofá", "desc": "Sofá 4 Lugares Connect Retrátil e Reclinável Pena 2.50m", "pv": 950, "tipo_ref": "NOVO", "preco_ref": 2375.0, "estado": "ruim", "link": "https://www.pontofrio.com.br/sofa-4-lugares-retratil-e-reclinavel-maximo-250m-veludo-bege-bege/p/1569837398?utm_medium=cpc&utm_source=google_freelisting&IdSku=1569837398&idLojista=11121&tipoLojista=3P"},
-{"num": 58, "cat": "Móveis", "nome": "Cadeira de Escritório", "desc": "Cadeira Para Escritório Presidente Giratória Ergonômica ANM312 P", "pv": 400, "tipo_ref": "NOVO", "preco_ref": 570.0, "estado": "bom", "link": "https://www.amazon.com.br/dp/B07YF1PNKK?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_5"},
-{"num": 66, "cat": "Móveis", "nome": "Mesa", "desc": "KIT - Conjunto Dobrável Tabaco Mesa 70x70 com 2 Cadeiras Madeira - Disa Móveis", "pv": 270, "tipo_ref": "NOVO", "preco_ref": 385.0, "estado": "", "link": "https://www.amazon.com.br/dp/B08PQ1FC17?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_6"},
-{"num": 71, "cat": "Cozinha", "nome": "Panela Elétrica", "desc": "Panela pressão elétrica Electrolux digital capacidade 6L silenciosa segura 10 travas segurança 15 receitas pré-programadas 3 níveis pressão PCC20 inox preto 220v por Rita Lobo", "pv": 380, "tipo_ref": "NOVO", "preco_ref": 549.0, "estado": "boa", "link": "https://www.amazon.com.br/dp/B076HSQQ18?ref=ppx_pop_dt_b_product_details&th=1"},
-{"num": 104, "cat": "", "nome": "Tapete", "desc": "Tapete São Carlos 150x200 cm Herat Export Siena - Cinza", "pv": 340, "tipo_ref": "NOVO", "preco_ref": 479.0, "estado": "boa", "link": "https://www.casasbahia.com.br/tapete-herat-export-150x200-siena-92-56/p/1566021302?utm_medium=Cpc&utm_source=GP_PLA&IdSku=1566021302&idLojista=118392&tipoLojista=3P&gclsrc=aw.ds&&utm_campaign=cb_mkp_gg_shopping_tudo&gad_source=1&gad_campaignid=23330756621&gbraid=0AAAAADtAamjCG0Oy5safv7VsfL6n7rJ21&gclid=EAIaIQobChMIio2dsKKYkwMVPkxIAB3b5SJ_EAQYASABEgJ0GvD_BwE"},
-{"num": 105, "cat": "", "nome": "Poltrona", "desc": "Poltrona de Massagem Louisiana com Puff Rivatti", "pv": 2200, "tipo_ref": "NOVO", "preco_ref": 3149.0, "estado": "boa", "link": "https://www.amazon.com.br/Poltrona-Massagem-Apoio-Louisiana-Rivatti/dp/B07NRC7LS9"}
-];
-const catIcons={"Eletrodomésticos":"🏠","Eletrônicos":"📺","Bebê/Infantil":"👶","Móveis":"🪑","Cozinha":"🍳","Academia":"💪","Diversos":"📦"};
-function fmt(v){return'R$ '+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
-function estadoClass(e){if(e==='bom'||e==='boa')return'estado-bom';if(e.includes('méd')||e.includes('med'))return'estado-medio';if(e==='ruim')return'estado-ruim';return'estado-bom';}
-function estadoLabel(e){if(e==='bom'||e==='boa')return'Bom estado';if(e.includes('méd')||e.includes('med'))return'Estado médio';if(e==='ruim')return'Estado ruim';return e||'Bom estado';}
-function renderCard(it){
-let refText=it.tipo_ref==='NOVO'?'Ref. novo: '+fmt(it.preco_ref):'Ref. usado: '+fmt(it.preco_ref);
-let linkHtml=it.link?'<a class="btn-internet" href="'+(it.link.startsWith('http')?it.link:'https://'+it.link)+'" target="_blank">Ver na Internet</a>':'';
-return'<div class="card"><div class="card-body">'
-+'<div><span class="num-badge">'+it.num+'</span>'
-+'<span class="cat-badge">'+it.cat+'</span>'
-+'<span class="estado-badge '+estadoClass(it.estado)+'">'+estadoLabel(it.estado)+'</span></div>'
-+'<h3>'+it.nome+'</h3>'
-+'<div class="desc">'+it.desc+'</div>'
-+'<div class="price">'+fmt(it.pv)+'</div>'
-+'<div class="ref">'+refText+'</div>'
-+linkHtml
-+'</div></div>';
-}
-function renderItems(list){
-const container=document.getElementById('content');
-const sum=document.getElementById('summary');
-if(list.length===0){container.innerHTML='<div class="grid"><div class="no-results">Nenhum item encontrado</div></div>';sum.textContent='';return;}
-let total=list.reduce((a,b)=>a+b.pv,0);
-sum.textContent=list.length+' itens · Valor total: '+fmt(total);
-// Group by category
-let groups={};
-let catOrder=[];
-list.forEach(it=>{
-let c=it.cat||'Outros';
-if(!groups[c]){groups[c]=[];catOrder.push(c);}
-groups[c].push(it);
-});
-let html='';
-catOrder.forEach(cat=>{
-let icon=catIcons[cat]||'📦';
-let items=groups[cat];
-html+='<div class="cat-section">';
-html+='<div class="cat-title"><span class="cat-icon">'+icon+'</span>'+cat+'<span class="cat-count">'+items.length+(items.length===1?' item':' itens')+'</span></div>';
-html+='</div>';
-html+='<div class="grid">';
-items.forEach(it=>{html+=renderCard(it);});
-html+='</div>';
-});
-container.innerHTML=html;
-}
-function filterItems(){
-let q=document.getElementById('search').value.toLowerCase();
-let c=document.getElementById('catFilter').value;
-let f=items.filter(it=>{
-let match=true;
-if(q)match=(it.nome+' '+it.desc+' '+it.cat).toLowerCase().includes(q);
-if(c)match=match&&it.cat===c;
-return match;
-});
-renderItems(f);
-}
-renderItems(items);
-</script>
+    <!-- Header -->
+    <div class="header">
+        <h1>Catálogo de Mudança</h1>
+        <p>Itens disponíveis para venda</p>
+    </div>
+
+    <!-- Summary Bar -->
+    <div class="summary-bar">
+        <div class="summary-item">
+            <div class="summary-item-value" id="total-count">0</div>
+            <div class="summary-item-label">Total de Itens</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-item-value" id="priced-count">0</div>
+            <div class="summary-item-label">Com Preço</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-item-value" id="pending-count">0</div>
+            <div class="summary-item-label">Preço Pendente</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-item-value" id="sold-count">0</div>
+            <div class="summary-item-label">Vendidos</div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-container">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="🔍 Buscar por nome ou descrição...">
+        </div>
+        <select id="category-filter" class="filter-select">
+            <option value="">Todas as Categorias</option>
+            <option value="Academia">Academia</option>
+            <option value="Bebê/Infantil">Bebê/Infantil</option>
+            <option value="Cozinha">Cozinha</option>
+            <option value="Diversos">Diversos</option>
+            <option value="Eletrodomésticos">Eletrodomésticos</option>
+            <option value="Eletrônicos">Eletrônicos</option>
+            <option value="Móveis">Móveis</option>
+            <option value="Pet">Pet</option>
+        </select>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Priced Section -->
+        <div class="section" id="priced-section">
+            <div class="section-title">Itens com Preço Definido</div>
+            <div id="priced-content"></div>
+        </div>
+
+        <!-- Pending Section -->
+        <div class="section" id="pending-section">
+            <div class="section-title">Preço a ser definido</div>
+            <div id="pending-content"></div>
+        </div>
+
+        <!-- Sold Section -->
+        <div class="section" id="sold-section">
+            <div class="section-title">Vendidos</div>
+            <div id="sold-content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Atualizado em Março 2026 · Contato: alanrjardim@hotmail.com
+    </div>
+
+    <script>
+        // Items data
+        const items = [
+            {"num":"1","nome":"Bicicleta Spinning","desc":"Bicicleta Spinning PodiumFit S200 (Unid. 1)","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"2","nome":"Bicicleta Spinning","desc":"Bicicleta Spinning PodiumFit S200 (Unid. 2)","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"3","nome":"Step EVA","desc":"Step EVA Aeróbica (Unid. 1)","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"4","nome":"Step EVA","desc":"Step EVA Aeróbica (Unid. 2)","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"5","nome":"Step EVA","desc":"Step EVA Aeróbica (Unid. 3)","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"6","nome":"Barra Fixa Multiponto","desc":"Barra Fixa Parede Multiponto","cat":"Academia","estado":"","price":"VENDIDO","vendido":true,"ok":false},
+            {"num":"7","nome":"Barra Fixa Blackwolf","desc":"Barra Fixa Parede Simples Blackwolf","cat":"Academia","estado":"","price":"VENDIDO","vendido":true,"ok":false},
+            {"num":"8","nome":"Fita Suspensão TRX","desc":"Fita Suspensão Funcional TRX Muvin","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"9","nome":"Argolas Olímpicas","desc":"Argolas Ginástica Olímpica Odin Fit","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"10","nome":"Kit Halteres Reguláveis","desc":"Kit Halteres/Barras Reguláveis PVC","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"11","nome":"Massageador Lombar","desc":"Massageador Lombar Magic Back Support","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"12","nome":"Prancha Flexão","desc":"Prancha Push-Up Flexão Colorida","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"13","nome":"Bola Pilates Azul","desc":"Bola de Pilates Azul Muvin","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"14","nome":"Bola Pilates c/ Base","desc":"Bola de Pilates Cinza c/ Base Cadeira","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"15","nome":"Super Band Elástica","desc":"Super Band Elástica Verde","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"16","nome":"Bicicleta Ergométrica","desc":"Bicicleta Ergométrica PodiumFit V100 Magnética 8cargas Max120Kg Silenciosa","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"17","nome":"Bicicleta Ergométrica","desc":"Bicicleta Ergométrica PodiumFit V100 Magnética 8cargas Max120Kg Silenciosa","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"18","nome":"Bola Pilates","desc":"Bola Pilates 55cm Muvin","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"19","nome":"Step EVA","desc":"Step EVA Academia 60x28x14cm","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"20","nome":"Fita Alongamento","desc":"Fita Alongamento Muvin 8 Alças","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"21","nome":"Super Band Elástica","desc":"Super Band 4.4 Extra Forte 365 Sports","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"22","nome":"Barra Fixa 65cm","desc":"Barra Fixa Parede 65cm Blackwolf","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"23","nome":"Argolas Olímpicas","desc":"Argola Olímpica Madeira Par Odin Fit","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"24","nome":"Barra Fixa Crossfit","desc":"Barra Fixa Parede Crossfit Pull-up Paralelas","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"25","nome":"Prancha Flexão","desc":"Prancha Flexão Braço LiveUp","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"26","nome":"Cadeira Bola Gaiam","desc":"Cadeira Bola Equilíbrio Gaiam","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"27","nome":"Extensores Cadeira Bola","desc":"Extensores Perna Cadeira Bola Gaiam","cat":"Academia","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"28","nome":"Carrinho, Bebê Conforto e Moisés","desc":"Safety 1st Travel System Magnific 5 em 1 (Unidade 1)","cat":"Bebê/Infantil","estado":"Ruim","price":"R$ 1.200","vendido":false,"ok":true},
+            {"num":"29","nome":"Carrinho, Bebê Conforto e Moisés","desc":"Safety 1st Travel System Magnific 5 em 1 (Unidade 2)","cat":"Bebê/Infantil","estado":"Médio","price":"R$ 1.800","vendido":false,"ok":true},
+            {"num":"30","nome":"Berço","desc":"Safety 1st Side by Side (Unidade 1)","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 640","vendido":false,"ok":true},
+            {"num":"31","nome":"Berço","desc":"Safety 1st Side by Side (Unidade 2)","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 640","vendido":false,"ok":true},
+            {"num":"32","nome":"Berço","desc":"Portátil Desmontável (Unidade 1)","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 240","vendido":false,"ok":true},
+            {"num":"33","nome":"Berço","desc":"Portátil Desmontável (Unidade 2)","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 240","vendido":false,"ok":true},
+            {"num":"34","nome":"Cadeira de Alimentação","desc":"Cosco Kids, Smart, Gelo","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 110","vendido":false,"ok":true},
+            {"num":"35","nome":"Cadeira de Alimentação","desc":"Cosco Kids, Smart, Gelo","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 110","vendido":false,"ok":true},
+            {"num":"36","nome":"Cadeira de Descanso e Balanço","desc":"Bliss Baby Style com Música, Mosquiteiro e Controle Remoto","cat":"Bebê/Infantil","estado":"Ruim","price":"R$ 230","vendido":false,"ok":true},
+            {"num":"37","nome":"Umidificador de Ar","desc":"Fisher-Price 2,2L Bivolt Automático Fisher Price - HC055","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 180","vendido":false,"ok":true},
+            {"num":"38","nome":"Tapete de Atividades","desc":"Kit Yogi Mat Fundo do Mar","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 250","vendido":false,"ok":true},
+            {"num":"39","nome":"Ninho","desc":"Kit Ninho Zero + Branco Cupuaçu","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 270","vendido":false,"ok":true},
+            {"num":"40","nome":"Almofada de Amamentação","desc":"Yogi Moon Cru","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 180","vendido":false,"ok":true},
+            {"num":"41","nome":"Cômoda","desc":"1 Porta 4 Gavetas 119cm 100% MDF Kakau Retrô Espresso Móveis","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 370","vendido":false,"ok":true},
+            {"num":"42","nome":"Guarda-Roupa","desc":"4 Portas 3 Gavetas em MDF Kakau Retrô Branco Brilho/Carvalho Branco/Carvalho","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 740","vendido":false,"ok":true},
+            {"num":"43","nome":"Banheira","desc":"Safety 1st, Banheira Smile com Suporte, Pink","cat":"Bebê/Infantil","estado":"Bom","price":"R$ 340","vendido":false,"ok":true},
+            {"num":"44","nome":"Colmeias Organizadoras","desc":"Kit 10 Colmeias Organizadoras Gavetas Bebê","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"45","nome":"Mosquiteiro Carrinho","desc":"Mosquiteiro Para Carrinho Buba","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"46","nome":"Cortador Unha Bebê","desc":"Cortador Lixa Unha Bebê Elétrico","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"47","nome":"Coletor Leite Materno","desc":"Coletor Leite Materno Silicone Medela","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"48","nome":"Trocador Bebê","desc":"Trocador Americano Bebê Impermeável","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"49","nome":"Saco Fraldas","desc":"Saco Fraldas Reutilizável Sigzagor","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"50","nome":"Triângulo Posicionador","desc":"Triângulo Posicionador Travesseiro Bebê","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"51","nome":"Banheira Ofurô","desc":"Banheira Ofurô Baby Tub Evolution","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"52","nome":"Arco Sunny Stroll","desc":"Arco Sunny Stroll Tiny Love Princess","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"53","nome":"Almofada Atividades","desc":"Almofada Atividades Buba Multicor","cat":"Bebê/Infantil","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"54","nome":"Liquidificador","desc":"Ninja Profissional 1000W Auto-iQ","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"55","nome":"Centrífuga","desc":"Philips Walita Viva 500W RI1836","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"56","nome":"Panela Elétrica","desc":"Panela pressão elétrica Electrolux digital capacidade 6L silenciosa segura 10 travas segurança 15 receitas pré-programadas 3 níveis pressão PCC20 inox preto 220v por Rita Lobo","cat":"Cozinha","estado":"Boa","price":"R$ 380","vendido":false,"ok":true},
+            {"num":"57","nome":"Panela Elétrica","desc":"Panela Arroz Elétrica Electrolux Rita Lobo","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"58","nome":"Airfryer","desc":"Airfryer Philips Walita Série 1000 XL 6.2L","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"59","nome":"Faqueiro Oster","desc":"Faqueiro Oster c/ Cepo Madeira","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"60","nome":"Sanduicheira Britânia Inox","desc":"Sanduicheira/Grill Britânia Inox","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"61","nome":"Chaleira Elétrica","desc":"Chaleira Elétrica Inox","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"62","nome":"Tampa de Vidro Grande","desc":"Tampa de Vidro Avulsa Grande","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"63","nome":"Panela de Pressão","desc":"Panela de Pressão Elétrica Digital 5L Mondial PE-38","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"64","nome":"Pipoqueira Philco","desc":"Pipoqueira Classic retrô Ppi04v Philco","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"65","nome":"Fruteira Aramada","desc":"Fruteira Aramada Metal Windsor","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"66","nome":"Bandeja Espelhada","desc":"Bandeja Espelhada Laqueada Off White","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"67","nome":"Faqueiro Oster","desc":"Faqueiro Oster Baldwyn 14pç Cepo Madeira","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"68","nome":"Chapa Ferro Fundido","desc":"Kit Chapa Ferro Fundido c/ Suporte Madeira","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"69","nome":"Sanduicheira Britânia","desc":"Sanduicheira Grill Press Inox Britânia","cat":"Cozinha","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"70","nome":"Abajur Globo","desc":"Abajur Globo Terrestre Iluminado","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"71","nome":"Violão Acústico + Suporte","desc":"Violão Acústico Clássico + Suporte","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"72","nome":"Torre Arranhador Gatos","desc":"Torre Arranhador Gatos Pelúcia","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"73","nome":"Estante Rústica Plantas","desc":"Estante Rústica Madeira Plantas","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"74","nome":"Nicho Prateleira","desc":"Nicho Prateleira Canto Branca","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"75","nome":"Espelho Grande","desc":"Espelho Grande Parede Sala Jantar","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"76","nome":"Luminária Tripé Madeira","desc":"Luminária Chão Tripé Madeira","cat":"Diversos","estado":"","price":"VENDIDO","vendido":true,"ok":false},
+            {"num":"77","nome":"Suporte 2 Monitores","desc":"Suporte Articulado 2 Monitores","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"78","nome":"Lixeira Fibra Sintética","desc":"Lixeira/Cesto Fibra Sintética Marrom","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"79","nome":"Vaso Bambu Alto","desc":"Vaso Planta Alta Bambu","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"80","nome":"Tesoura de Grama","desc":"Tesoura Para Grama Tramontina de Aço 9 Posições de Corte Com Cabo Plástico","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"81","nome":"Mop Giratório","desc":"Mop Giratório FlashLimp MOP8209-VA com Balde, Cabo Telescópico e Refil – Verde Água","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"82","nome":"Extensão Tripolar","desc":"Extensão Multiplicadora Tripolar 10A 1M","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"83","nome":"Pulseira Apple Marrom","desc":"Pulseira Couro Apple Watch 42-45mm Marrom","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"84","nome":"Pulseira Apple Visita","desc":"Pulseira Couro Apple Watch 42-45mm Visita","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"85","nome":"Encosto Lombar","desc":"Encosto Lombar Corretor Postural X-Krica","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"86","nome":"Massageador Lombar Multi","desc":"Massageador Lombar Multi-Níveis","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"87","nome":"Cabide Organizador","desc":"Cabide Calças Organizador Múltiplo Inox","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"88","nome":"Tábua de Passar","desc":"Tábua Passar Roupa Dobrável c/ Passa Manga","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"89","nome":"Bolsa Organizadora","desc":"Bolsa Organizadora Safety 1st Grey","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"90","nome":"Pasta Sanfonada","desc":"Pasta Sanfonada A4 Dello Serena 31 Divisórias","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"91","nome":"Bolsa Tiracolo","desc":"Bolsa Tiracolo Antirroubo","cat":"Diversos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"92","nome":"Geladeira","desc":"Consul Frost Free CRM43NK com 2 Portas Inox - 386 L – 110V","cat":"Eletrodomésticos","estado":"Bom","price":"R$ 2.230","vendido":false,"ok":true},
+            {"num":"93","nome":"Frigobar","desc":"Midea 45L MRC06B1-S Inox 127V","cat":"Eletrodomésticos","estado":"Bom","price":"R$ 560","vendido":false,"ok":true},
+            {"num":"94","nome":"Máquina de Lavar e Secar","desc":"LG VC5 11kg Branca CV3011WG4","cat":"Eletrodomésticos","estado":"Ruim","price":"R$ 1.720","vendido":false,"ok":true},
+            {"num":"95","nome":"Lava-Louças","desc":"Electrolux 8 Serviços Inox Compacta com Programa Eco (LE08S) 220V","cat":"Eletrodomésticos","estado":"Bom","price":"R$ 1.700","vendido":false,"ok":true},
+            {"num":"96","nome":"Micro-ondas","desc":"Panasonic NN-ST67HSRUN - 110V, 32L, Inox","cat":"Eletrodomésticos","estado":"Bom","price":"R$ 490","vendido":false,"ok":true},
+            {"num":"97","nome":"Fogão","desc":"Consul 5 Bocas Inox CFS5VAR Bivolt","cat":"Eletrodomésticos","estado":"Bom","price":"R$ 1.250","vendido":false,"ok":true},
+            {"num":"98","nome":"Ar-Condicionado","desc":"Philco Split Eco Inverter 9000 BTUs Frio PAC900ITFM9W","cat":"Eletrodomésticos","estado":"Bom","price":"R$ 1.370","vendido":false,"ok":true},
+            {"num":"99","nome":"Ar-Condicionado","desc":"Samsung Digital Inverter 8 Polos 9000 BTUs Frio AR09MVSPBGMXAZ","cat":"Eletrodomésticos","estado":"Bom","price":"R$ 1.100","vendido":false,"ok":true},
+            {"num":"100","nome":"Transformador 5000VA","desc":"Transformador V&M 5000VA Bivolt","cat":"Eletrodomésticos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"101","nome":"Chuveiro Lorenzetti","desc":"Chuveiro Acqua Duo Lorenzetti 127V","cat":"Eletrodomésticos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"102","nome":"Ferro de Passar","desc":"Ferro Passar Roupa Black+Decker 1100W","cat":"Eletrodomésticos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"103","nome":"Aquecedor Mondial","desc":"Aquecedor Ar Mondial 1500W A-08","cat":"Eletrodomésticos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"104","nome":"Televisão","desc":"Samsung UHD 4K 75\" Crystal 4K","cat":"Eletrônicos","estado":"Bom","price":"R$ 3.850","vendido":false,"ok":true},
+            {"num":"105","nome":"Televisão","desc":"Philips LED 50\" UHD 4K 50PUG6513","cat":"Eletrônicos","estado":"Média","price":"R$ 1.200","vendido":false,"ok":true},
+            {"num":"106","nome":"Televisão","desc":"Philco 42\" LED Roku TV PTV42G52RTV","cat":"Eletrônicos","estado":"Bom","price":"R$ 1.190","vendido":false,"ok":true},
+            {"num":"107","nome":"Relógio","desc":"Apple Watch Series 7 45mm","cat":"Eletrônicos","estado":"Bom","price":"R$ 1.250","vendido":false,"ok":true},
+            {"num":"108","nome":"Soundbar com Subwoofer","desc":"LG SN4 com SPN4B-W 300W RMS","cat":"Eletrônicos","estado":"Bom","price":"R$ 770","vendido":false,"ok":true},
+            {"num":"109","nome":"Roteador","desc":"Gigabit TP-Link Archer C6 AC1200 Dual Band MU-MIMO","cat":"Eletrônicos","estado":"Bom","price":"R$ 240","vendido":false,"ok":true},
+            {"num":"110","nome":"Roteador","desc":"Gigabit TP-Link Archer C6 AC1200 Dual Band MU-MIMO","cat":"Eletrônicos","estado":"Bom","price":"R$ 240","vendido":false,"ok":true},
+            {"num":"111","nome":"Ring Light","desc":"Ring Light com Tripé Profissional","cat":"Eletrônicos","estado":"Bom","price":"R$ 40","vendido":false,"ok":true},
+            {"num":"112","nome":"Aspirador","desc":"Electrolux Ergorapido 2em1 ERG22","cat":"Eletrônicos","estado":"Médio","price":"R$ 600","vendido":false,"ok":true},
+            {"num":"113","nome":"Fire TV Stick 4K","desc":"Fire TV Stick 4K com Alexa","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"114","nome":"Mouse Logitech","desc":"Mouse sem fio Logitech M170","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"115","nome":"Fire TV Stick Lite","desc":"Fire TV Stick Lite com Alexa","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"116","nome":"Controle IR Smart","desc":"Controle Infravermelho Automação Casa Inteligente","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"117","nome":"Microfone Lapela","desc":"Microfone Lapela Boya BY-M1","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"118","nome":"Smart Lâmpada RGB","desc":"Smart Lâmpada Wi-Fi Positivo RGB","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"119","nome":"Carregador Pilhas","desc":"Carregador Pilhas Duracell AA/AAA","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"120","nome":"Fechadura Digital","desc":"Fechadura Digital Intelbras FR 101","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"121","nome":"Cabo USB-C HDMI","desc":"Cabo USB C para HDMI 1.8m Upgrow","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"122","nome":"Smart Controle Wi-Fi","desc":"Smart Controle Universal Wi-Fi Positivo","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"123","nome":"Adaptador Dual HDMI","desc":"Adaptador USB 3.0 Dual HDMI Wavlink","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"124","nome":"Power Bank 10000mAh","desc":"Power Bank i2GO 10000mAh USB-C","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"125","nome":"Adaptador Wi-Fi USB","desc":"Adaptador USB Wireless Dual Band Intelbras","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"126","nome":"Projetor Galaxy Star","desc":"Projetor Galaxy Star Projector Yunsye","cat":"Eletrônicos","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"127","nome":"Mesa de Jantar","desc":"","cat":"Móveis","estado":"Bom","price":"R$ 1.260","vendido":false,"ok":true},
+            {"num":"128","nome":"Mesa Externa","desc":"","cat":"Móveis","estado":"Bom","price":"R$ 630","vendido":false,"ok":true},
+            {"num":"129","nome":"Poltrona","desc":"Cadeira de Amamentação para Mamãe Balanço com Puff -Linho Ds Home","cat":"Móveis","estado":"Bom","price":"R$ 740","vendido":false,"ok":true},
+            {"num":"130","nome":"Puff Descanso","desc":"Puff Descanso Poltrona (Unid. 1)","cat":"Móveis","estado":"","price":"VENDIDO","vendido":true,"ok":false},
+            {"num":"131","nome":"Puff Descanso","desc":"Puff Descanso Poltrona (Unid. 2)","cat":"Móveis","estado":"","price":"VENDIDO","vendido":true,"ok":false},
+            {"num":"132","nome":"Cama","desc":"Colchão Magnético Kenko Premium Casal c/ Massagem Bluetooth King Size","cat":"Móveis","estado":"Médio","price":"R$ 5.340","vendido":false,"ok":true},
+            {"num":"133","nome":"Cama","desc":"Cama Box Casal Queen Size","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"134","nome":"Sofá","desc":"Sofá 4 Lugares Connect Retrátil e Reclinável Pena 2.50m","cat":"Móveis","estado":"Ruim","price":"R$ 950","vendido":false,"ok":true},
+            {"num":"135","nome":"Sofá","desc":"Sofá Branco 3 Lugares Sala Estar","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"136","nome":"Sofá Redondo Externo","desc":"Sofá Redondo Fibra Sintética Externa","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"137","nome":"Ombrelone","desc":"Ombrelone Área Externa","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"138","nome":"Banco Rústico","desc":"Banco Rústico Madeira (Unid. 1)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"139","nome":"Banco Rústico","desc":"Banco Rústico Madeira (Unid. 2)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"140","nome":"Mesinha Lateral Pé Palito","desc":"Mesinha Redonda Lateral Pé Palito (Unid. 1)","cat":"Móveis","estado":"","price":"VENDIDO","vendido":true,"ok":false},
+            {"num":"141","nome":"Mesinha Lateral Pé Palito","desc":"Mesinha Redonda Lateral Pé Palito (Unid. 2)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"142","nome":"Mesinha Lateral Pé Palito","desc":"Mesinha Redonda Lateral Pé Palito (Unid. 3)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"143","nome":"Mesinha Lateral Pé Palito","desc":"Mesinha Redonda Lateral Pé Palito (Unid. 4)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"144","nome":"Mesa em L","desc":"Mesa Escritório em L Branca/Madeira","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"145","nome":"Gaveteiro Escritório","desc":"Gaveteiro Rodinhas Escritório","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"146","nome":"Cadeira de Escritório","desc":"Cadeira Para Escritório Presidente Giratória Ergonômica ANM312 P","cat":"Móveis","estado":"Bom","price":"R$ 400","vendido":false,"ok":true},
+            {"num":"147","nome":"Cadeira Eames Branca","desc":"Cadeira Escritório Eames Branca (Unid. 2)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"148","nome":"Cadeira Mesh Preta","desc":"Cadeira Escritório Tela Mesh Preta (Unid. 1)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"149","nome":"Cadeira Mesh Preta","desc":"Cadeira Escritório Tela Mesh Preta (Unid. 2)","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"150","nome":"Guarda-Roupa Casal","desc":"Guarda-Roupa Casal Branco Portas Correr","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"151","nome":"Aparador Sala Jantar","desc":"Aparador Madeira Longo Sala Jantar","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"152","nome":"Carrinho Bar Madeira","desc":"Carrinho Bar/Chá Madeira c/ Rodinhas","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"153","nome":"Balcão Branco 2 Portas","desc":"Balcão/Armário Branco 2 Portas","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"154","nome":"Mesa","desc":"KIT - Conjunto Dobrável Tabaco Mesa 70x70 com 2 Cadeiras Madeira - Disa Móveis","cat":"Móveis","estado":"","price":"R$ 270","vendido":false,"ok":true},
+            {"num":"155","nome":"Cadeira Dobrável","desc":"Cadeira Dobrável Preta Madeira","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"156","nome":"Mesa Apoio Industrial","desc":"Mesa Apoio Lateral Industrial C","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"157","nome":"Tapete","desc":"Tapete São Carlos 150x200 cm Herat Export Siena - Cinza","cat":"Móveis","estado":"Boa","price":"R$ 340","vendido":false,"ok":true},
+            {"num":"158","nome":"Poltrona","desc":"Poltrona de Massagem Louisiana com Puff Rivatti","cat":"Móveis","estado":"Boa","price":"R$ 2.200","vendido":false,"ok":true},
+            {"num":"159","nome":"Conjunto Mesa Lateral","desc":"Conjunto de Mesa Lateral e Apoio Retrô Decore - Off White - RPM Móveis","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"160","nome":"Suporte TV Articulado","desc":"Suporte TV Tri-articulado 23 a 65\"","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"161","nome":"Suporte TV Fixo","desc":"Suporte Fixo TV 14 a 100\" ELG Genius","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"162","nome":"Luminária LED Armário","desc":"Luminária LED Recarregável Armário c/ Imã","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"163","nome":"Capacho Bem Vindo","desc":"Capacho 60x40cm Net Bem Vindo","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"164","nome":"Banquinho Ergonômico","desc":"Banquinho Apoio Pés Ergonômico Ajustável","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"165","nome":"Suporte Monitor Mesa","desc":"Suporte Articulado Mesa Monitor ELG F80N","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"166","nome":"Luminária Mesa RGB","desc":"Luminária Mesa Touch RGB Sem Fio","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"167","nome":"Porta Controle MDF","desc":"Porta Controle Remotos 3 Divisórias MDF","cat":"Móveis","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"168","nome":"Cama Túnel Gato","desc":"Cama Túnel Redonda Gato Feltro","cat":"Pet","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"169","nome":"Tapete Chevron","desc":"Tapete Algodão 2,00x1,40 Chevron Off White","cat":"Pet","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"170","nome":"Guia Retrátil Pet","desc":"Guia Retrátil Coleira Pet 5m","cat":"Pet","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"171","nome":"Coleira Peitoral Pet","desc":"Coleira Peitoral Select Pet c/ Guia","cat":"Pet","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"172","nome":"Mochila Gatos","desc":"Mochila Transportadora Gatos Luffylive","cat":"Pet","estado":"","price":"Preço a ser definido","vendido":false,"ok":false},
+            {"num":"173","nome":"Escova Vapor Gatos","desc":"Escova Vapor Gatos 3em1 Steamy Cat","cat":"Pet","estado":"","price":"Preço a ser definido","vendido":false,"ok":false}
+        ];
+
+        // Category emojis
+        const categoryEmojis = {
+            "Academia": "💪",
+            "Bebê/Infantil": "👶",
+            "Cozinha": "🍳",
+            "Diversos": "📦",
+            "Eletrodomésticos": "🏠",
+            "Eletrônicos": "📺",
+            "Móveis": "🪑",
+            "Pet": "🐾"
+        };
+
+        // Category colors
+        const categoryColors = {
+            "Academia": "#4CAF50",
+            "Bebê/Infantil": "#FF9800",
+            "Cozinha": "#2196F3",
+            "Diversos": "#9C27B0",
+            "Eletrodomésticos": "#F44336",
+            "Eletrônicos": "#00BCD4",
+            "Móveis": "#FFC107",
+            "Pet": "#E91E63"
+        };
+
+        // Filter items by section
+        function filterItemsBySection(section) {
+            if (section === 'priced') {
+                return items.filter(item => item.ok === true && item.vendido === false);
+            } else if (section === 'pending') {
+                return items.filter(item => item.ok === false && item.vendido === false);
+            } else if (section === 'sold') {
+                return items.filter(item => item.vendido === true);
+            }
+            return [];
+        }
+
+        // Get state badge class
+        function getStateBadgeClass(estado) {
+            if (estado === 'Bom' || estado === 'Boa') return 'badge-state';
+            if (estado === 'Médio' || estado === 'Média') return 'badge-state medio';
+            if (estado === 'Ruim') return 'badge-state ruim';
+            return 'badge-state';
+        }
+
+        // Create card HTML
+        function createCard(item) {
+            const isSold = item.vendido;
+            const cardClass = isSold ? 'card sold' : 'card';
+
+            let stateHtml = '';
+            if (item.estado) {
+                stateHtml = `<span class="${getStateBadgeClass(item.estado)}">Estado do item: ${item.estado}</span>`;
+            }
+
+            let priceClass = 'card-price';
+            if (item.price === 'Preço a ser definido') {
+                priceClass += ' pending';
+            } else if (item.vendido) {
+                priceClass += ' sold';
+            }
+
+            return `
+                <div class="${cardClass}">
+                    <div class="card-header">
+                        <div class="card-number">${item.num}</div>
+                        <div class="card-badges">
+                            <span class="badge badge-category">${item.cat}</span>
+                            ${stateHtml}
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>${item.nome}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="${priceClass}">${item.price}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Group items by category
+        function groupByCategory(items) {
+            const grouped = {};
+            items.forEach(item => {
+                if (!grouped[item.cat]) {
+                    grouped[item.cat] = [];
+                }
+                grouped[item.cat].push(item);
+            });
+            return grouped;
+        }
+
+        // Render section
+        function renderSection(sectionId, contentId, filterFunc, displayNone = false) {
+            const sectionItems = filterFunc();
+            const container = document.getElementById(contentId);
+
+            if (sectionItems.length === 0) {
+                document.getElementById(sectionId).style.display = displayNone ? 'none' : 'block';
+                container.innerHTML = '<p style="text-align: center; color: #95a5a6; padding: 20px;">Nenhum item nesta seção</p>';
+                return;
+            }
+
+            const grouped = groupByCategory(sectionItems);
+            let html = '';
+
+            // Sort categories
+            const sortedCategories = Object.keys(grouped).sort();
+
+            sortedCategories.forEach(cat => {
+                const catItems = grouped[cat];
+                const emoji = categoryEmojis[cat] || '';
+                const catColor = categoryColors[cat] || '#666';
+
+                html += `
+                    <div class="category-group">
+                        <div class="category-header" style="background-color: ${catColor};">
+                            <span class="category-emoji">${emoji}</span>
+                            <span class="category-name">${cat}</span>
+                            <span class="category-badge">${catItems.length} item${catItems.length !== 1 ? 's' : ''}</span>
+                        </div>
+                        <div class="items-grid">
+                            ${catItems.map(item => createCard(item)).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Update summary
+        function updateSummary() {
+            const totalItems = items.length;
+            const pricedItems = items.filter(i => i.ok === true && i.vendido === false).length;
+            const pendingItems = items.filter(i => i.ok === false && i.vendido === false).length;
+            const soldItems = items.filter(i => i.vendido === true).length;
+
+            document.getElementById('total-count').textContent = totalItems;
+            document.getElementById('priced-count').textContent = pricedItems;
+            document.getElementById('pending-count').textContent = pendingItems;
+            document.getElementById('sold-count').textContent = soldItems;
+        }
+
+        // Filter and render
+        function applyFilters() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const selectedCategory = document.getElementById('category-filter').value;
+
+            let filteredItems = items.filter(item => {
+                const matchesSearch = item.nome.toLowerCase().includes(searchTerm) ||
+                                     item.desc.toLowerCase().includes(searchTerm);
+                const matchesCategory = selectedCategory === '' || item.cat === selectedCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            // Split into sections
+            const pricedItems = filteredItems.filter(i => i.ok === true && i.vendido === false);
+            const pendingItems = filteredItems.filter(i => i.ok === false && i.vendido === false);
+            const soldItems = filteredItems.filter(i => i.vendido === true);
+
+            // Render each section
+            renderSection('priced-section', 'priced-content', () => pricedItems, pricedItems.length === 0);
+            renderSection('pending-section', 'pending-content', () => pendingItems, pendingItems.length === 0);
+            renderSection('sold-section', 'sold-content', () => soldItems, soldItems.length === 0);
+        }
+
+        // Event listeners
+        document.getElementById('search-input').addEventListener('input', applyFilters);
+        document.getElementById('category-filter').addEventListener('change', applyFilters);
+
+        // Initialize
+        updateSummary();
+        applyFilters();
+    </script>
 </body>
 </html>
