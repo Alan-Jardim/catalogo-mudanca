@@ -62,114 +62,98 @@
         .summary-item-label {
             font-size: 0.9em;
             color: #7f8c8d;
-            margin-top: 5px;
+            margin-top: 4px;
         }
 
-        /* Controls Container */
+        /* Controls */
         .controls-container {
-            position: sticky;
-            top: 0;
-            background: white;
-            padding: 15px 20px;
-            margin: 0 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            z-index: 100;
             display: flex;
             gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            align-items: center;
         }
 
         .search-box {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
         }
 
         .search-box input {
             width: 100%;
-            padding: 10px 15px;
-            border: 2px solid #ecf0f1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
             transition: border-color 0.3s;
         }
 
         .search-box input:focus {
-            outline: none;
             border-color: #3498db;
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+            outline: none;
         }
 
         .filter-select {
-            padding: 10px 15px;
-            border: 2px solid #ecf0f1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
+            background: white;
             cursor: pointer;
-            background-color: white;
-            transition: border-color 0.3s;
+            min-width: 200px;
         }
 
-        .filter-select:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        /* Main Container */
+        /* Container */
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
         /* Section */
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .section-title {
-            font-size: 1.8em;
+            font-size: 1.4em;
+            font-weight: 700;
             color: #2c3e50;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
+            padding: 15px 0;
             border-bottom: 3px solid #3498db;
+            margin-bottom: 20px;
         }
 
-        /* Category Group */
+        /* Category */
         .category-group {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .category-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
-            padding: 15px;
+            padding: 12px 16px;
             border-radius: 8px;
-            border-left: none;
-            color: #fff;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
 
         .category-emoji {
-            font-size: 1.8em;
+            font-size: 1.3em;
         }
 
         .category-name {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #fff;
-            flex: 1;
+            font-size: 1.1em;
         }
 
         .category-badge {
-            background-color: rgba(255,255,255,0.25);
-            color: white;
-            padding: 5px 12px;
+            margin-left: auto;
+            background: rgba(255,255,255,0.3);
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.85em;
-            font-weight: 600;
         }
 
         /* Grid */
@@ -177,7 +161,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            margin-bottom: 20px;
         }
 
         /* Card */
@@ -186,194 +169,169 @@
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .card-header {
-            padding: 15px;
-            border-bottom: 1px solid #ecf0f1;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .card-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #3498db;
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 0.9em;
-            flex-shrink: 0;
-        }
-
-        .card-badges {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            flex: 1;
-            justify-content: flex-end;
-        }
-
-        .badge {
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75em;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .badge-category {
-            background-color: #ecf0f1;
-            color: #2c3e50;
-        }
-
-        .badge-state {
-            background-color: #27ae60;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.7em;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .badge-state.medio {
-            background-color: #f39c12;
-        }
-
-        .badge-state.ruim {
-            background-color: #e74c3c;
-        }
-
-        .card-content {
-            padding: 15px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-content h3 {
-            font-size: 1.1em;
-            color: #2c3e50;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .card-content p {
-            font-size: 0.9em;
-            color: #7f8c8d;
-            margin-bottom: 12px;
-            flex: 1;
-            line-height: 1.4;
-        }
-
-        .card-footer {
-            padding: 15px;
-            border-top: 1px solid #ecf0f1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-price {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: #e74c3c;
-        }
-
-        .card-price.pending {
-            color: #f39c12;
-        }
-
-        .card-price.sold {
-            color: #95a5a6;
-            text-decoration: line-through;
-        }
-
-        /* VENDIDO Overlay */
         .card.sold {
-            opacity: 0.85;
+            opacity: 0.65;
         }
 
-        .card.sold::before {
-            content: 'VENDIDO';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-35deg);
-            font-size: 3em;
-            font-weight: 900;
-            color: rgba(231, 76, 60, 0.4);
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 10;
-            letter-spacing: 2px;
-        }
-
-        
-        /* Card Image */
         .card-image {
-            width: 100%;
             height: 200px;
-            overflow: hidden;
-            background-color: #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #f8f9fa;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sold-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .sold-overlay span {
+            color: rgba(231, 76, 60, 0.7);
+            font-size: 2.2em;
+            font-weight: 900;
+            letter-spacing: 6px;
+            transform: rotate(-30deg);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+            border: 4px solid rgba(231, 76, 60, 0.5);
+            padding: 4px 24px;
+            border-radius: 8px;
         }
 
         .card-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            object-fit: contain;
+            padding: 8px;
         }
 
-        .card:hover .card-image img {
-            transform: scale(1.05);
-        }
-
-        .card-image .no-image {
-            color: #bdc3c7;
+        .no-image {
             font-size: 3em;
+            opacity: 0.3;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px 0;
+        }
+
+        .card-number {
+            background: #2c3e50;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .badge-category {
+            background: #e8f4fd;
+            color: #2196F3;
+        }
+
+        .badge-state {
+            background: #e8f5e9;
+            color: #388E3C;
+        }
+
+        .badge-state.medio {
+            background: #fffde7;
+            color: #F9A825;
+        }
+
+        .badge-state.ruim {
+            background: #ffebee;
+            color: #D32F2F;
+        }
+
+        .card-content {
+            padding: 12px 16px;
+        }
+
+        .card-content h3 {
+            font-size: 1em;
+            margin-bottom: 6px;
+            color: #2c3e50;
+        }
+
+        .card-content p {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            padding: 12px 16px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .card-price {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #27ae60;
+        }
+
+        .card-price.pending {
+            color: #e67e22;
+            font-size: 0.9em;
+        }
+
+        .card-price.sold {
+            color: #e74c3c;
+            text-decoration: line-through;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 30px 20px;
-            color: #7f8c8d;
-            font-size: 0.95em;
+            padding: 30px;
+            color: #95a5a6;
+            font-size: 0.9em;
             margin-top: 40px;
-            border-top: 1px solid #ecf0f1;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8em;
-            }
-
-            .controls-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .search-box {
-                min-width: auto;
             }
 
             .filter-select {
@@ -398,8 +356,16 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <h1>Catálogo de Mudança</h1>
-        <p>Itens disponíveis para venda</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; max-width: 900px; margin: 0 auto;">
+            <div style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25); border-left: 4px solid #f1c40f; border-radius: 8px; padding: 12px 18px; max-width: 280px; text-align: left;">
+                <p style="margin: 0; font-size: 13px; color: #f1c40f; font-weight: 700; line-height: 1.4;">💬 Propostas são bem-vindas!</p>
+                <p style="margin: 4px 0 0; font-size: 12px; color: rgba(255,255,255,0.9); line-height: 1.4;">Valores negociáveis. Combos com desconto especial.</p>
+            </div>
+            <div style="text-align: center;">
+                <h1>Catálogo de Mudança</h1>
+                <p>Itens disponíveis para venda</p>
+            </div>
+        </div>
     </div>
 
     <!-- Summary Bar -->
@@ -432,6 +398,7 @@
             <option value="Academia">Academia</option>
             <option value="Bebê/Infantil">Bebê/Infantil</option>
             <option value="Cozinha">Cozinha</option>
+            <option value="Decoração">Decoração</option>
             <option value="Diversos">Diversos</option>
             <option value="Eletrodomésticos">Eletrodomésticos</option>
             <option value="Eletrônicos">Eletrônicos</option>
@@ -469,187 +436,175 @@
     <script>
         // Items data
         const items = [
-            {"num": "1", "nome": "Bicicleta Spinning", "desc": "Bicicleta Spinning PodiumFit S200 (Unid. 1)", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "2", "nome": "Bicicleta Spinning", "desc": "Bicicleta Spinning PodiumFit S200 (Unid. 2)", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "3", "nome": "Step EVA", "desc": "Step EVA Aeróbica (Unid. 1)", "cat": "Academia", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "4", "nome": "Step EVA", "desc": "Step EVA Aeróbica (Unid. 2)", "cat": "Academia", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "5", "nome": "Step EVA", "desc": "Step EVA Aeróbica (Unid. 3)", "cat": "Academia", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "6", "nome": "Barra Fixa Multiponto", "desc": "Barra Fixa Parede Multiponto", "cat": "Academia", "estado": "", "price": "VENDIDO", "vendido": true, "ok": false, "foto": ""},
-            {"num": "7", "nome": "Barra Fixa Blackwolf", "desc": "Barra Fixa Parede Simples Blackwolf", "cat": "Academia", "estado": "", "price": "VENDIDO", "vendido": true, "ok": false, "foto": ""},
-            {"num": "8", "nome": "Fita Suspensão TRX", "desc": "Fita Suspensão Funcional TRX Muvin", "cat": "Academia", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "9", "nome": "Argolas Olímpicas", "desc": "Argolas Ginástica Olímpica Odin Fit", "cat": "Academia", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "10", "nome": "Kit Halteres Reguláveis", "desc": "Kit Halteres/Barras Reguláveis PVC", "cat": "Academia", "estado": "", "price": "R$ 210,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "11", "nome": "Massageador Lombar", "desc": "Massageador Lombar Magic Back Support", "cat": "Academia", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "12", "nome": "Prancha Flexão", "desc": "Prancha Push-Up Flexão Colorida", "cat": "Academia", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "13", "nome": "Bola Pilates Azul", "desc": "Bola de Pilates Azul Muvin", "cat": "Academia", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "14", "nome": "Bola Pilates c/ Base", "desc": "Bola de Pilates Cinza c/ Base Cadeira", "cat": "Academia", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "15", "nome": "Super Band Elástica", "desc": "Super Band Elástica Verde", "cat": "Academia", "estado": "", "price": "R$ 60,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "16", "nome": "Bicicleta Ergométrica", "desc": "Bicicleta Ergométrica PodiumFit V100 Magnética 8cargas Max120Kg Silenciosa (Unid. 1)", "cat": "Academia", "estado": "", "price": "R$ 630,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "17", "nome": "Bicicleta Ergométrica", "desc": "Bicicleta Ergométrica PodiumFit V100 Magnética 8cargas Max120Kg Silenciosa (Unid. 2)", "cat": "Academia", "estado": "", "price": "R$ 630,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "18", "nome": "Bola Pilates", "desc": "Bola Pilates 55cm Muvin", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "19", "nome": "Step EVA", "desc": "Step EVA Academia 60x28x14cm", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "20", "nome": "Fita Alongamento", "desc": "Fita Alongamento Muvin 8 Alças", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "21", "nome": "Super Band Elástica", "desc": "Super Band 4.4 Extra Forte 365 Sports", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "22", "nome": "Barra Fixa 65cm", "desc": "Barra Fixa Parede 65cm Blackwolf", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "23", "nome": "Argolas Olímpicas", "desc": "Argola Olímpica Madeira Par Odin Fit", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "24", "nome": "Barra Fixa Crossfit", "desc": "Barra Fixa Parede Crossfit Pull-up Paralelas", "cat": "Academia", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "25", "nome": "Prancha Flexão", "desc": "Prancha Flexão Braço LiveUp", "cat": "Academia", "estado": "", "price": "R$ 130,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "26", "nome": "Cadeira Bola Gaiam", "desc": "Cadeira Bola Equilíbrio Gaiam", "cat": "Academia", "estado": "", "price": "R$ 490,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "27", "nome": "Extensores Cadeira Bola", "desc": "Extensores Perna Cadeira Bola Gaiam", "cat": "Academia", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "28", "nome": "Carrinho, Bebê Conforto e Moisés", "desc": "Safety 1st Travel System Magnific 5 em 1 (Unidade 1)", "cat": "Bebê/Infantil", "estado": "Ruim", "price": "R$ 1.200,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "29", "nome": "Carrinho, Bebê Conforto e Moisés", "desc": "Safety 1st Travel System Magnific 5 em 1 (Unidade 2)", "cat": "Bebê/Infantil", "estado": "Médio", "price": "R$ 1.800,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "30", "nome": "Berço", "desc": "Safety 1st Side by Side (Unidade 1)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 650,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "31", "nome": "Berço", "desc": "Safety 1st Side by Side (Unidade 2)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 650,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "32", "nome": "Berço", "desc": "Portátil Cercado Desmontável Lune Maxi Baby (Cinza) (Unid. 1)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 240,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "33", "nome": "Berço", "desc": "Portátil Cercado Desmontável Lune Maxi Baby (Cinza) (Unid. 2)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 240,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "34", "nome": "Cadeira de Alimentação", "desc": "Cosco Kids, Smart, Gelo (Unid. 1)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 110,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "35", "nome": "Cadeira de Alimentação", "desc": "Cosco Kids, Smart, Gelo (Unid. 2)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 110,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "36", "nome": "Cadeira de Descanso e Balanço", "desc": "Bliss Baby Style com Música, Mosquiteiro e Controle Remoto", "cat": "Bebê/Infantil", "estado": "Ruim", "price": "R$ 230,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "37", "nome": "Umidificador de Ar", "desc": "Fisher-Price 2,2L Bivolt Automático Fisher Price - HC055", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 180,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "38", "nome": "Tapete de Atividades", "desc": "Kit Yogi Mat Fundo do Mar", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 250,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "39", "nome": "Ninho", "desc": "Kit Ninho Zero + Branco Cupuaçu", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 270,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "40", "nome": "Almofada de Amamentação", "desc": "Yogi Moon Cru", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 180,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "41", "nome": "Cômoda", "desc": "1 Porta 4 Gavetas 119cm 100% MDF Kakau Retrô Espresso Móveis", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 370,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "42", "nome": "Guarda-Roupa", "desc": "4 Portas 3 Gavetas em MDF Kakau Retrô Branco Brilho/Carvalho Branco/Carvalho", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 740,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "43", "nome": "Banheira", "desc": "Safety 1st, Banheira Smile com Suporte, Pink", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 340,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "44", "nome": "Colmeias Organizadoras", "desc": "Kit 10 Colmeias Organizadoras Gavetas Bebê", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 90,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "45", "nome": "Mosquiteiro Carrinho", "desc": "Mosquiteiro Para Carrinho Buba", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 20,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "46", "nome": "Cortador Unha Bebê", "desc": "Cortador Lixa Unha Bebê Elétrico", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 20,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "47", "nome": "Coletor Leite Materno", "desc": "Coletor Leite Materno Silicone Medela", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 60,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "48", "nome": "Trocador Bebê", "desc": "Trocador Americano Bebê Impermeável", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 60,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "49", "nome": "Saco Fraldas", "desc": "Saco Fraldas Reutilizável Sigzagor", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 200,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "50", "nome": "Triângulo Posicionador", "desc": "Triângulo Posicionador Travesseiro Bebê", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "51", "nome": "Banheira Ofurô", "desc": "Banheira Ofurô Baby Tub Evolution", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "52", "nome": "Arco Sunny Stroll", "desc": "Arco Sunny Stroll Tiny Love Princess (Unid. 1)", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 90,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "53", "nome": "Arco Sunny Stroll", "desc": "Arco Sunny Stroll Tiny Love Princess (Unid. 2)", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 90,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "54", "nome": "Almofada Atividades", "desc": "Almofada Atividades Buba Multicor", "cat": "Bebê/Infantil", "estado": "", "price": "R$ 60,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "55", "nome": "Liquidificador", "desc": "Ninja Profissional 1000W Auto-iQ", "cat": "Cozinha", "estado": "", "price": "R$ 980,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "56", "nome": "Centrífuga", "desc": "Philips Walita Viva 500W RI1836", "cat": "Cozinha", "estado": "", "price": "R$ 310,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "57", "nome": "Panela Elétrica", "desc": "Panela pressão elétrica Electrolux digital capacidade 6L silenciosa segura 10 travas segurança 15 receitas pré-programadas 3 níveis pressão PCC20 inox preto 220v por Rita Lobo", "cat": "Cozinha", "estado": "Boa", "price": "R$ 380,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "58", "nome": "Panela Elétrica", "desc": "Panela Arroz Elétrica Electrolux Rita Lobo", "cat": "Cozinha", "estado": "", "price": "R$ 210,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "59", "nome": "Airfryer", "desc": "Airfryer Philips Walita Série 1000 XL 6.2L", "cat": "Cozinha", "estado": "", "price": "R$ 260,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "60", "nome": "Faqueiro Oster", "desc": "Faqueiro Oster c/ Cepo Madeira", "cat": "Cozinha", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "61", "nome": "Sanduicheira Britânia Inox", "desc": "Sanduicheira/Grill Britânia Inox", "cat": "Cozinha", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "62", "nome": "Chaleira Elétrica", "desc": "Chaleira Elétrica Inox", "cat": "Cozinha", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "63", "nome": "Tampa de Vidro Grande", "desc": "Tampa de Vidro Avulsa Grande", "cat": "Cozinha", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "64", "nome": "Panela de Pressão", "desc": "Panela de Pressão Elétrica Digital 5L Mondial PE-38", "cat": "Cozinha", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "65", "nome": "Pipoqueira Philco", "desc": "Pipoqueira Classic retrô Ppi04v Philco", "cat": "Cozinha", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "66", "nome": "Fruteira Aramada", "desc": "Fruteira Aramada Metal Windsor", "cat": "Cozinha", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "67", "nome": "Bandeja Espelhada", "desc": "Bandeja Espelhada Laqueada Off White", "cat": "Cozinha", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "68", "nome": "Faqueiro Oster", "desc": "Faqueiro Oster Baldwyn 14pç Cepo Madeira", "cat": "Cozinha", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "69", "nome": "Chapa Ferro Fundido", "desc": "Kit Chapa Ferro Fundido c/ Suporte Madeira", "cat": "Cozinha", "estado": "", "price": "R$ 150,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "70", "nome": "Sanduicheira Britânia", "desc": "Sanduicheira Grill Press Inox Britânia", "cat": "Cozinha", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "71", "nome": "Abajur Globo", "desc": "Abajur Globo Terrestre Iluminado", "cat": "Diversos", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "72", "nome": "Violão Acústico + Suporte", "desc": "Violão Acústico Clássico + Suporte", "cat": "Diversos", "estado": "", "price": "R$ 350,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "73", "nome": "Torre Arranhador Gatos", "desc": "Torre Arranhador Gatos Pelúcia", "cat": "Diversos", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "74", "nome": "Estante Rústica Plantas", "desc": "Estante Rústica Madeira Plantas", "cat": "Diversos", "estado": "", "price": "R$ 280,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "75", "nome": "Nicho Prateleira", "desc": "Nicho Prateleira Canto Branca", "cat": "Diversos", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "76", "nome": "Espelho Grande", "desc": "Espelho Grande Parede Sala Jantar", "cat": "Diversos", "estado": "", "price": "R$ 420,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "77", "nome": "Luminária Tripé Madeira", "desc": "Luminária Chão Tripé Madeira", "cat": "Diversos", "estado": "", "price": "VENDIDO", "vendido": true, "ok": false, "foto": ""},
-            {"num": "78", "nome": "Suporte 2 Monitores", "desc": "Suporte Articulado 2 Monitores", "cat": "Diversos", "estado": "", "price": "R$ 180,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "79", "nome": "Lixeira Fibra Sintética", "desc": "Lixeira/Cesto Fibra Sintética Marrom", "cat": "Diversos", "estado": "", "price": "R$ 80,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "80", "nome": "Vaso Bambu Alto", "desc": "Vaso Planta Alta Bambu", "cat": "Diversos", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "81", "nome": "Tesoura de Grama", "desc": "Tesoura Para Grama Tramontina de Aço 9 Posições de Corte Com Cabo Plástico", "cat": "Diversos", "estado": "", "price": "R$ 160,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "82", "nome": "Mop Giratório", "desc": "Mop Giratório FlashLimp MOP8209-VA com Balde, Cabo Telescópico e Refil – Verde Água", "cat": "Diversos", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "83", "nome": "Extensão Tripolar", "desc": "Extensão Multiplicadora Tripolar 10A 1M", "cat": "Diversos", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "84", "nome": "Pulseira Apple Marrom", "desc": "Pulseira Couro Apple Watch 42-45mm Marrom", "cat": "Diversos", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "85", "nome": "Pulseira Apple Visita", "desc": "Pulseira Couro Apple Watch 42-45mm Visita", "cat": "Diversos", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "86", "nome": "Encosto Lombar", "desc": "Encosto Lombar Corretor Postural X-Krica", "cat": "Diversos", "estado": "", "price": "R$ 10,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "87", "nome": "Massageador Lombar Multi", "desc": "Massageador Lombar Multi-Níveis", "cat": "Diversos", "estado": "", "price": "R$ 30,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "88", "nome": "Cabide Organizador", "desc": "Cabide Calças Organizador Múltiplo Inox", "cat": "Diversos", "estado": "", "price": "R$ 20,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "89", "nome": "Tábua de Passar", "desc": "Tábua Passar Roupa Dobrável c/ Passa Manga", "cat": "Diversos", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "90", "nome": "Bolsa Organizadora", "desc": "Bolsa Organizadora Safety 1st Grey", "cat": "Diversos", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "91", "nome": "Pasta Sanfonada", "desc": "Pasta Sanfonada A4 Dello Serena 31 Divisórias", "cat": "Diversos", "estado": "", "price": "R$ 50,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "92", "nome": "Bolsa Tiracolo", "desc": "Bolsa Tiracolo Antirroubo (Unid. 1)", "cat": "Diversos", "estado": "", "price": "R$ 150,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "93", "nome": "Bolsa Tiracolo", "desc": "Bolsa Tiracolo Antirroubo (Unid. 2)", "cat": "Diversos", "estado": "", "price": "R$ 150,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "94", "nome": "Geladeira", "desc": "Consul Frost Free CRM43NK com 2 Portas Inox - 386 L – 110V", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 2.230,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "95", "nome": "Frigobar", "desc": "Midea 45L MRC06B1-S Inox 127V", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 560,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "96", "nome": "Máquina de Lavar e Secar", "desc": "LG VC5 11kg Branca CV3011WG4", "cat": "Eletrodomésticos", "estado": "Ruim", "price": "R$ 1.720,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "97", "nome": "Lava-Louças", "desc": "Electrolux 8 Serviços Inox Compacta com Programa Eco (LE08S) 220V", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1.700,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "98", "nome": "Micro-ondas", "desc": "Panasonic NN-ST67HSRUN - 110V, 32L, Inox", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 490,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "99", "nome": "Fogão", "desc": "Consul 5 Bocas Inox CFS5VAR Bivolt", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1.250,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "100", "nome": "Ar-Condicionado", "desc": "Philco Split Eco Inverter 9000 BTUs Frio PAC900ITFM9W", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1.430,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "101", "nome": "Ar-Condicionado", "desc": "Samsung Digital Inverter 8 Polos 9000 BTUs Frio AR09MVSPBGMXAZ", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1.100,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "102", "nome": "Transformador 5000VA", "desc": "Transformador V&M 5000VA Bivolt", "cat": "Eletrodomésticos", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "103", "nome": "Chuveiro Lorenzetti", "desc": "Chuveiro Acqua Duo Lorenzetti 127V", "cat": "Eletrodomésticos", "estado": "", "price": "R$ 330,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "104", "nome": "Ferro de Passar", "desc": "Ferro Passar Roupa Black+Decker 1100W", "cat": "Eletrodomésticos", "estado": "", "price": "R$ 80,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "105", "nome": "Aquecedor Mondial", "desc": "Aquecedor Ar Mondial 1500W A-08", "cat": "Eletrodomésticos", "estado": "", "price": "R$ 100,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "106", "nome": "Televisão", "desc": "Samsung UHD 4K 75\" Crystal 4K", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 3.850,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "107", "nome": "Televisão", "desc": "Philips LED 50\" UHD 4K 50PUG6513", "cat": "Eletrônicos", "estado": "Média", "price": "R$ 1.200,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "108", "nome": "Televisão", "desc": "Philco 42\" LED Roku TV PTV42G52RTV", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 1.190,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "109", "nome": "Relógio", "desc": "Apple Watch Series 7 45mm", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 1.250,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "110", "nome": "Soundbar com Subwoofer", "desc": "LG SN4 com SPN4B-W 300W RMS", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 770,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "111", "nome": "Roteador", "desc": "Gigabit TP-Link Archer C6 AC1200 Dual Band MU-MIMO (Unid. 1)", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 240,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "112", "nome": "Roteador", "desc": "Gigabit TP-Link Archer C6 AC1200 Dual Band MU-MIMO (Unid. 2)", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 240,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "113", "nome": "Ring Light", "desc": "Ring Light com Tripé Profissional", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 40,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "114", "nome": "Aspirador", "desc": "Electrolux Ergorapido 2em1 ERG22", "cat": "Eletrônicos", "estado": "Médio", "price": "R$ 600,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "115", "nome": "Fire TV Stick 4K", "desc": "Fire TV Stick 4K com Alexa", "cat": "Eletrônicos", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "116", "nome": "Mouse Logitech", "desc": "Mouse sem fio Logitech M170", "cat": "Eletrônicos", "estado": "", "price": "Preço a ser definido", "vendido": false, "ok": false, "foto": ""},
-            {"num": "117", "nome": "Fire TV Stick Lite", "desc": "Fire TV Stick Lite com Alexa", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 250,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "118", "nome": "Controle IR Smart", "desc": "Controle Infravermelho Automação Casa Inteligente", "cat": "Eletrônicos", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "119", "nome": "Microfone Lapela", "desc": "Microfone Lapela Boya BY-M1", "cat": "Eletrônicos", "estado": "", "price": "R$ 50,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "120", "nome": "Smart Lâmpada RGB", "desc": "Smart Lâmpada Wi-Fi Positivo RGB", "cat": "Eletrônicos", "estado": "", "price": "R$ 20,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "121", "nome": "Carregador Pilhas", "desc": "Carregador Pilhas Duracell AA/AAA", "cat": "Eletrônicos", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "122", "nome": "Fechadura Digital", "desc": "Fechadura Digital Intelbras FR 101", "cat": "Eletrônicos", "estado": "", "price": "R$ 180,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "123", "nome": "Cabo USB-C HDMI", "desc": "Cabo USB C para HDMI 1.8m Upgrow", "cat": "Eletrônicos", "estado": "", "price": "R$ 210,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "124", "nome": "Smart Controle Wi-Fi", "desc": "Smart Controle Universal Wi-Fi Positivo", "cat": "Eletrônicos", "estado": "", "price": "R$ 50,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "125", "nome": "Adaptador Dual HDMI", "desc": "Adaptador USB 3.0 Dual HDMI Wavlink", "cat": "Eletrônicos", "estado": "", "price": "R$ 250,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "126", "nome": "Power Bank 10000mAh", "desc": "Power Bank i2GO 10000mAh USB-C (Unid. 1)", "cat": "Eletrônicos", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "127", "nome": "Power Bank 10000mAh", "desc": "Power Bank i2GO 10000mAh USB-C (Unid. 2)", "cat": "Eletrônicos", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "128", "nome": "Adaptador Wi-Fi USB", "desc": "Adaptador USB Wireless Dual Band Intelbras", "cat": "Eletrônicos", "estado": "", "price": "R$ 90,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "129", "nome": "Projetor Galaxy Star", "desc": "Projetor Galaxy Star Projector Yunsye", "cat": "Eletrônicos", "estado": "", "price": "R$ 130,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "130", "nome": "Mesa de Jantar", "desc": "Mesa de Jantar", "cat": "Móveis", "estado": "Bom", "price": "R$ 1.260,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "131", "nome": "Mesa Externa", "desc": "Mesa Externa", "cat": "Móveis", "estado": "Bom", "price": "R$ 630,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "132", "nome": "Poltrona", "desc": "Cadeira de Amamentação para Mamãe Balanço com Puff -Linho Ds Home", "cat": "Móveis", "estado": "Bom", "price": "R$ 740,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "133", "nome": "Puff Descanso", "desc": "Puff Descanso Poltrona (Unid. 1)", "cat": "Móveis", "estado": "", "price": "VENDIDO", "vendido": true, "ok": false, "foto": ""},
-            {"num": "134", "nome": "Puff Descanso", "desc": "Puff Descanso Poltrona (Unid. 2)", "cat": "Móveis", "estado": "", "price": "VENDIDO", "vendido": true, "ok": false, "foto": ""},
-            {"num": "135", "nome": "Cama", "desc": "Colchão Magnético Kenko Premium Casal c/ Massagem Bluetooth King Size", "cat": "Móveis", "estado": "Médio", "price": "R$ 5.340,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "136", "nome": "Cama", "desc": "Cama Box Casal Queen Size", "cat": "Móveis", "estado": "", "price": "R$ 1.750,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "137", "nome": "Sofá", "desc": "Sofá 4 Lugares Connect Retrátil e Reclinável Pena 2.50m", "cat": "Móveis", "estado": "Ruim", "price": "R$ 950,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "138", "nome": "Sofá", "desc": "Sofá Branco 3 Lugares Sala Estar", "cat": "Móveis", "estado": "", "price": "R$ 1.750,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "139", "nome": "Sofá Redondo Externo", "desc": "Sofá Redondo Fibra Sintética Externa", "cat": "Móveis", "estado": "", "price": "R$ 2.100,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "140", "nome": "Ombrelone", "desc": "Ombrelone Área Externa", "cat": "Móveis", "estado": "", "price": "R$ 350,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "141", "nome": "Banco Rústico", "desc": "Banco Rústico Madeira (Unid. 1)", "cat": "Móveis", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "142", "nome": "Banco Rústico", "desc": "Banco Rústico Madeira (Unid. 2)", "cat": "Móveis", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "143", "nome": "Mesinha Lateral Pé Palito", "desc": "Mesinha Redonda Lateral Pé Palito (Unid. 1)", "cat": "Móveis", "estado": "", "price": "VENDIDO", "vendido": true, "ok": false, "foto": ""},
-            {"num": "144", "nome": "Mesinha Lateral Pé Palito", "desc": "Mesinha Redonda Lateral Pé Palito (Unid. 2)", "cat": "Móveis", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "145", "nome": "Mesinha Lateral Pé Palito", "desc": "Mesinha Redonda Lateral Pé Palito (Unid. 3)", "cat": "Móveis", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "146", "nome": "Mesinha Lateral Pé Palito", "desc": "Mesinha Redonda Lateral Pé Palito (Unid. 4)", "cat": "Móveis", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "147", "nome": "Mesa em L", "desc": "Mesa Escritório em L Branca/Madeira", "cat": "Móveis", "estado": "", "price": "R$ 1.050,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "148", "nome": "Gaveteiro Escritório", "desc": "Gaveteiro Rodinhas Escritório", "cat": "Móveis", "estado": "", "price": "R$ 280,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "149", "nome": "Cadeira de Escritório", "desc": "Cadeira Para Escritório Presidente Giratória Ergonômica ANM312 P", "cat": "Móveis", "estado": "Bom", "price": "R$ 400,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "150", "nome": "Cadeira Eames Branca", "desc": "Cadeira Escritório Eames Branca (Unid. 2)", "cat": "Móveis", "estado": "", "price": "R$ 560,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "151", "nome": "Cadeira Mesh Preta", "desc": "Cadeira Escritório Tela Mesh Preta (Unid. 1)", "cat": "Móveis", "estado": "", "price": "R$ 560,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "152", "nome": "Cadeira Mesh Preta", "desc": "Cadeira Escritório Tela Mesh Preta (Unid. 2)", "cat": "Móveis", "estado": "", "price": "R$ 560,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "153", "nome": "Guarda-Roupa Casal", "desc": "Guarda-Roupa Casal Branco Portas Correr", "cat": "Móveis", "estado": "", "price": "R$ 1.050,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "154", "nome": "Aparador Sala Jantar", "desc": "Aparador Madeira Longo Sala Jantar", "cat": "Móveis", "estado": "", "price": "R$ 420,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "155", "nome": "Carrinho Bar Madeira", "desc": "Carrinho Bar/Chá Madeira c/ Rodinhas", "cat": "Móveis", "estado": "", "price": "R$ 250,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "156", "nome": "Balcão Branco 2 Portas", "desc": "Balcão/Armário Branco 2 Portas", "cat": "Móveis", "estado": "", "price": "R$ 280,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "157", "nome": "Mesa", "desc": "KIT - Conjunto Dobrável Tabaco Mesa 70x70 com 2 Cadeiras Madeira - Disa Móveis", "cat": "Móveis", "estado": "", "price": "R$ 270,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "158", "nome": "Cadeira Dobrável", "desc": "Cadeira Dobrável Preta Madeira", "cat": "Móveis", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "159", "nome": "Mesa Apoio Industrial", "desc": "Mesa Apoio Lateral Industrial C", "cat": "Móveis", "estado": "", "price": "R$ 140,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "160", "nome": "Tapete", "desc": "Tapete São Carlos 150x200 cm Herat Export Siena - Cinza", "cat": "Móveis", "estado": "Boa", "price": "R$ 340,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "161", "nome": "Poltrona", "desc": "Poltrona de Massagem Louisiana com Puff Rivatti", "cat": "Móveis", "estado": "Boa", "price": "R$ 2.200,00", "vendido": false, "ok": true, "foto": ""},
-            {"num": "162", "nome": "Conjunto Mesa Lateral", "desc": "Conjunto de Mesa Lateral e Apoio Retrô Decore - Off White - RPM Móveis", "cat": "Móveis", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "163", "nome": "Suporte TV Articulado", "desc": "Suporte TV Tri-articulado 23 a 65\"", "cat": "Móveis", "estado": "", "price": "R$ 50,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "164", "nome": "Suporte TV Fixo", "desc": "Suporte Fixo TV 14 a 100\" ELG Genius", "cat": "Móveis", "estado": "", "price": "R$ 10,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "165", "nome": "Luminária LED Armário", "desc": "Luminária LED Recarregável Armário c/ Imã", "cat": "Móveis", "estado": "", "price": "R$ 60,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "166", "nome": "Capacho Bem Vindo", "desc": "Capacho 60x40cm Net Bem Vindo", "cat": "Móveis", "estado": "", "price": "R$ 60,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "167", "nome": "Banquinho Ergonômico", "desc": "Banquinho Apoio Pés Ergonômico Ajustável (Unid. 1)", "cat": "Móveis", "estado": "", "price": "R$ 90,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "168", "nome": "Banquinho Ergonômico", "desc": "Banquinho Apoio Pés Ergonômico Ajustável (Unid. 2)", "cat": "Móveis", "estado": "", "price": "R$ 90,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "169", "nome": "Suporte Monitor Mesa", "desc": "Suporte Articulado Mesa Monitor ELG F80N (Unid. 1)", "cat": "Móveis", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "170", "nome": "Suporte Monitor Mesa", "desc": "Suporte Articulado Mesa Monitor ELG F80N (Unid. 2)", "cat": "Móveis", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "171", "nome": "Suporte Monitor Mesa", "desc": "Suporte Articulado Mesa Monitor ELG F80N (Unid. 3)", "cat": "Móveis", "estado": "", "price": "R$ 110,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "172", "nome": "Luminária Mesa RGB", "desc": "Luminária Mesa Touch RGB Sem Fio", "cat": "Móveis", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "173", "nome": "Porta Controle MDF", "desc": "Porta Controle Remotos 3 Divisórias MDF", "cat": "Móveis", "estado": "", "price": "R$ 30,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "174", "nome": "Cama Túnel Gato", "desc": "Cama Túnel Redonda Gato Feltro", "cat": "Pet", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "175", "nome": "Tapete Chevron", "desc": "Tapete Algodão 2,00x1,40 Chevron Off White", "cat": "Pet", "estado": "", "price": "R$ 120,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "176", "nome": "Guia Retrátil Pet", "desc": "Guia Retrátil Coleira Pet 5m", "cat": "Pet", "estado": "", "price": "R$ 20,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "177", "nome": "Coleira Peitoral Pet", "desc": "Coleira Peitoral Select Pet c/ Guia", "cat": "Pet", "estado": "", "price": "R$ 40,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "178", "nome": "Mochila Gatos", "desc": "Mochila Transportadora Gatos Luffylive (Unid. 1)", "cat": "Pet", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "179", "nome": "Mochila Gatos", "desc": "Mochila Transportadora Gatos Luffylive (Unid. 2)", "cat": "Pet", "estado": "", "price": "R$ 70,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "180", "nome": "Escova Vapor Gatos", "desc": "Escova Vapor Gatos 3em1 Steamy Cat (Unid. 1)", "cat": "Pet", "estado": "", "price": "R$ 10,00", "vendido": false, "ok": false, "foto": ""},
-            {"num": "181", "nome": "Escova Vapor Gatos", "desc": "Escova Vapor Gatos 3em1 Steamy Cat (Unid. 2)", "cat": "Pet", "estado": "", "price": "R$ 10,00", "vendido": false, "ok": false, "foto": ""}
+            {"num": "1", "nome": "Argolas Olímpicas", "desc": "Argolas Ginástica Olímpica Odin Fit", "cat": "Academia", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/97. Argolas Ginástica Olímpica Odin Fit.jpeg"},
+            {"num": "2", "nome": "Barra Fixa Blackwolf", "desc": "Barra Fixa Parede Simples Blackwolf", "cat": "Academia", "estado": "Bom", "price": "VENDIDO", "vendido": true, "hasPrice": false, "foto": "Fotos Novas/7. Barra Fixa Blackwolf.jpg"},
+            {"num": "3", "nome": "Barra Fixa Multiponto", "desc": "Barra Fixa Parede Multiponto", "cat": "Academia", "estado": "Bom", "price": "VENDIDO", "vendido": true, "hasPrice": false, "foto": "Fotos Novas/94. Barra Fixa Parede Multiponto.jpeg"},
+            {"num": "4", "nome": "Bicicleta Ergométrica (Unidade 1)", "desc": "Bicicleta Ergométrica PodiumFit V100 Magnética 8cargas Max120Kg Silenciosa", "cat": "Academia", "estado": "Bom", "price": "R$ 630.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/bicicleta ergometrica 1.jpg"},
+            {"num": "5", "nome": "Bicicleta Ergométrica (Unidade 2)", "desc": "Bicicleta Ergométrica PodiumFit V100 Magnética 8cargas Max120Kg Silenciosa", "cat": "Academia", "estado": "Bom", "price": "R$ 630.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/bicicleta ergometrica 2.jpg"},
+            {"num": "6", "nome": "Bola Pilates Azul", "desc": "Bola de Pilates Azul Muvin", "cat": "Academia", "estado": "Bom", "price": "R$ 70.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/13. Bola Pilates Azul.jpg"},
+            {"num": "7", "nome": "Cadeira Bola Gaiam + Extensores", "desc": "Cadeira Bola Gaiam + Extensores Cadeira Bola", "cat": "Academia", "estado": "Bom", "price": "R$ 500,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/26. Cadeira Bola Gaiam.jpg"},
+            {"num": "8", "nome": "Fita Suspensão TRX", "desc": "Fita Suspensão Funcional TRX Muvin", "cat": "Academia", "estado": "Bom", "price": "R$ 40.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/8. Fita Suspensão TRX.jpg"},
+            {"num": "9", "nome": "Kit Halteres Reguláveis", "desc": "Kit Halteres/Barras Reguláveis PVC", "cat": "Academia", "estado": "Bom", "price": "R$ 210.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/98. Kit HalteresBarras Reguláveis PVC.jpeg"},
+            {"num": "10", "nome": "Massageador Lombar Multi", "desc": "Massageador Lombar Multi-Níveis", "cat": "Academia", "estado": "Bom", "price": "R$ 30.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/86. Massageador Lombar Multi.jpg"},
+            {"num": "11", "nome": "Prancha Flexão", "desc": "Prancha Flexão Braço LiveUp", "cat": "Academia", "estado": "Bom", "price": "R$ 130.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/25. Prancha Flexão.jpg"},
+            {"num": "12", "nome": "Step EVA (Unidade 1)", "desc": "Step EVA Aeróbica (Unid. 1)", "cat": "Academia", "estado": "Bom", "price": "R$ 120.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/5. Step EVA.jpg"},
+            {"num": "13", "nome": "Step EVA (Unidade 2)", "desc": "Step EVA Aeróbica (Unid. 2)", "cat": "Academia", "estado": "Bom", "price": "R$ 120.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/5. Step EVA.jpg"},
+            {"num": "14", "nome": "Step EVA (Unidade 3)", "desc": "Step EVA Aeróbica (Unid. 3)", "cat": "Academia", "estado": "Bom", "price": "R$ 120.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/5. Step EVA.jpg"},
+            {"num": "15", "nome": "Super Band Elástica", "desc": "Super Band Elástica Verde", "cat": "Academia", "estado": "Bom", "price": "R$ 60.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/15. Super Band Elástica.jpg"},
+            {"num": "16", "nome": "Almofada Atividades", "desc": "Almofada Atividades Buba Multicor", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 60.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/almofada buba.jpg"},
+            {"num": "17", "nome": "Almofada de Amamentação", "desc": "Yogi Moon Cru", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 180.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/40. Almofada de Amamentação.webp"},
+            {"num": "18", "nome": "Arco Sunny Stroll (Unidade 1)", "desc": "Arco Sunny Stroll Tiny Love Princess", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 90.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/52. Arco Sunny Stroll.jpg"},
+            {"num": "19", "nome": "Arco Sunny Stroll (Unidade 2)", "desc": "Arco Sunny Stroll Tiny Love Princess", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 90.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/53. Arco Sunny Stroll.jpg"},
+            {"num": "20", "nome": "Banheira", "desc": "Safety 1st, Banheira Smile com Suporte, Pink", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 340.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/BANHEIRA.jpg"},
+            {"num": "21", "nome": "Banheira Ofurô", "desc": "Banheira Ofurô Baby Tub Evolution", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 120.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/51. Banheira Ofurô.jpg"},
+            {"num": "22", "nome": "Berço (Unidade 1)", "desc": "Safety 1st Side by Side (Unidade 1)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 650.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/30. Berço.jpg"},
+            {"num": "23", "nome": "Berço (Unidade 2)", "desc": "Safety 1st Side by Side (Unidade 2)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 650.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/31. Berço.jpg"},
+            {"num": "24", "nome": "Berço (Unidade 3)", "desc": "Portátil Cercado Desmontável Lune Maxi Baby (Cinza)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 240.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/33. Portátil Desmontável (Unidade 1).jpg"},
+            {"num": "25", "nome": "Berço (Unidade 4)", "desc": "Portátil Cercado Desmontável Lune Maxi Baby (Cinza)", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 240.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/33. Portátil Desmontável (Unidade 1).jpg"},
+            {"num": "26", "nome": "Cadeira de Alimentação (Unidade 1)", "desc": "Cosco Kids, Smart, Gelo", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/34. Cadeira de Alimentação.webp"},
+            {"num": "27", "nome": "Cadeira de Alimentação (Unidade 2)", "desc": "Cosco Kids, Smart, Gelo", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/35. Cadeira de Alimentação.webp"},
+            {"num": "28", "nome": "Cadeira de Descanso e Balanço", "desc": "Bliss Baby Style com Música, Mosquiteiro e Controle Remoto", "cat": "Bebê/Infantil", "estado": "Ruim", "price": "R$ 230.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/36. Cadeira de Descanso e Balanço.jpg"},
+            {"num": "29", "nome": "Carrinho, Bebê Conforto e Moisés (Unidade 1)", "desc": "Safety 1st Travel System Magnific 5 em 1 (Unidade 1)", "cat": "Bebê/Infantil", "estado": "Ruim", "price": "R$ 1200.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/28. Carrinho, Bebê Conforto e Moisés.jpg"},
+            {"num": "30", "nome": "Carrinho, Bebê Conforto e Moisés (Unidade 2)", "desc": "Safety 1st Travel System Magnific 5 em 1 (Unidade 2)", "cat": "Bebê/Infantil", "estado": "Regular", "price": "R$ 1800.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/29. Carrinho, Bebê Conforto e Moisés.jpg"},
+            {"num": "31", "nome": "Coletor Leite Materno", "desc": "Coletor Leite Materno Silicone Medela", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 60.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/47. Coletor Leite Materno.jpg"},
+            {"num": "32", "nome": "Colmeias Organizadoras", "desc": "Kit 10 Colmeias Organizadoras Gavetas Bebê", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 90.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/44. Colmeias Organizadoras.jpg"},
+            {"num": "33", "nome": "Cortador Unha Bebê", "desc": "Cortador Lixa Unha Bebê Elétrico", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 20.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/46. Cortador Unha Bebê.jpg"},
+            {"num": "34", "nome": "Cômoda", "desc": "1 Porta 4 Gavetas 119cm 100% MDF Kakau Retrô Espresso Móveis", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 370.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/41. Comoda.webp"},
+            {"num": "35", "nome": "Guarda-Roupa", "desc": "4 Portas 3 Gavetas em MDF Kakau Retrô Branco Brilho/Carvalho Branco/Carvalho", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 740.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/42. Guarda Roupas.webp"},
+            {"num": "36", "nome": "Mosquiteiro Carrinho", "desc": "Mosquiteiro Para Carrinho Buba", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 20.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/45. Mosquiteiro Carrinho.jpg"},
+            {"num": "37", "nome": "Ninho", "desc": "Kit Ninho Zero + Branco Cupuaçu", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 270.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/39. Ninho.webp"},
+            {"num": "38", "nome": "Saco Fraldas", "desc": "Saco Fraldas Reutilizável Sigzagor", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 200.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/49. Saco Fraldas.jpg"},
+            {"num": "39", "nome": "Tapete de Atividades", "desc": "Kit Yogi Mat Fundo do Mar", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 250.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/38. Tapete de Atividades.webp"},
+            {"num": "40", "nome": "Triângulo Posicionador", "desc": "Triângulo Posicionador Travesseiro Bebê", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 40.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/50. Triângulo Posicionador.jpg"},
+            {"num": "41", "nome": "Trocador Bebê", "desc": "Trocador Americano Bebê Impermeável", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 60.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/48. Trocador Bebê.jpg"},
+            {"num": "42", "nome": "Umidificador de Ar", "desc": "Fisher-Price 2,2L Bivolt Automático Fisher Price - HC055", "cat": "Bebê/Infantil", "estado": "Bom", "price": "R$ 180.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/37. Umidificador de Ar.jpg"},
+            {"num": "43", "nome": "Bandeja Espelhada", "desc": "Bandeja Espelhada Laqueada Off White", "cat": "Cozinha", "estado": "Bom", "price": "R$ 120.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/66. Bandeja Espelhada.jpg"},
+            {"num": "44", "nome": "Centrífuga", "desc": "Philips Walita Viva 500W RI1836", "cat": "Cozinha", "estado": "Bom", "price": "R$ 310.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/centrifuga walita.jpg"},
+            {"num": "45", "nome": "Chapa Ferro Fundido", "desc": "Kit Chapa Ferro Fundido c/ Suporte Madeira", "cat": "Cozinha", "estado": "Bom", "price": "R$ 150.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/55. Cama Box Casal Padrão queen.jpeg"},
+            {"num": "46", "nome": "Faqueiro Oster", "desc": "Faqueiro Oster", "cat": "Cozinha", "estado": "Bom", "price": "R$ 140.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/59. Faqueiro Oster.jpg"},
+            {"num": "47", "nome": "Fruteira Aramada", "desc": "Fruteira Aramada Metal Windsor", "cat": "Cozinha", "estado": "Bom", "price": "R$ 40.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/65. Fruteira Aramada.jpg"},
+            {"num": "48", "nome": "Pipoqueira Philco", "desc": "Pipoqueira Classic retrô Ppi04v Philco", "cat": "Cozinha", "estado": "Ruim", "price": "R$ 240.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/pipoqueira.jpg"},
+            {"num": "49", "nome": "Sanduicheira Britânia Inox", "desc": "Sanduicheira/Grill Britânia Inox", "cat": "Cozinha", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/60. Sanduicheira Britânia Inox.jpg"},
+            {"num": "50", "nome": "Abajur Globo", "desc": "Abajur Globo Terrestre Iluminado", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/luminaria globo terrestre.webp"},
+            {"num": "51", "nome": "Bandeja Decorativa", "desc": "Bandeja Decorativa", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/bandeja.jpeg"},
+            {"num": "52", "nome": "Espelho Grande", "desc": "Espelho Grande Parede Sala Jantar", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Espelho de sala.jpeg"},
+            {"num": "53", "nome": "Estante Rústica Plantas", "desc": "Estante Rústica Madeira Plantas", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Suporte para plantas.jpeg"},
+            {"num": "54", "nome": "Vaso Decorativo (Unidade 1)", "desc": "Vaso Decorativo (Unidade 1)", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Vaso 1.jpeg"},
+            {"num": "55", "nome": "Vaso Decorativo (Unidade 2)", "desc": "Vaso Decorativo (Unidade 2)", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Vaso 2.jpeg"},
+            {"num": "56", "nome": "Vaso Decorativo (Unidade 3)", "desc": "Vaso Decorativo (Unidade 3)", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Vaso 3.jpeg"},
+            {"num": "57", "nome": "Vaso Decorativo (Unidade 4)", "desc": "Vaso Decorativo (Unidade 4)", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Vaso 4.jpeg"},
+            {"num": "58", "nome": "Vaso Decorativo (Unidade 5)", "desc": "Vaso Decorativo (Unidade 5)", "cat": "Decoração", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Vaso 5.jpeg"},
+            {"num": "59", "nome": "Banquinho Ergonômico (Unidade 1)", "desc": "Banquinho Apoio Pés Ergonômico Ajustável", "cat": "Diversos", "estado": "Bom", "price": "R$ 90.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/164. Banquinho Ergonômico.jpg"},
+            {"num": "60", "nome": "Banquinho Ergonômico (Unidade 2)", "desc": "Banquinho Apoio Pés Ergonômico Ajustável", "cat": "Diversos", "estado": "Bom", "price": "R$ 90.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/164. Banquinho Ergonômico.jpg"},
+            {"num": "61", "nome": "Bastão de Trekking", "desc": "Bastão de Trekking", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Bastao de trekking.jpeg"},
+            {"num": "62", "nome": "Bolsa Organizadora", "desc": "Bolsa Organizadora Safety 1st Grey", "cat": "Diversos", "estado": "Bom", "price": "R$ 70.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/89. Bolsa Organizadora.jpg"},
+            {"num": "63", "nome": "Bolsa Tiracolo (Unidade 1)", "desc": "Bolsa Tiracolo Antirroubo", "cat": "Diversos", "estado": "Bom", "price": "R$ 150.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/92. Bolsa Tiracolo.jpg"},
+            {"num": "64", "nome": "Bolsa Tiracolo (Unidade 2)", "desc": "Bolsa Tiracolo Antirroubo", "cat": "Diversos", "estado": "Bom", "price": "R$ 150.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/92. Bolsa Tiracolo.jpg"},
+            {"num": "65", "nome": "Cabide Organizador", "desc": "Cabide Calças Organizador Múltiplo Inox", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/87. Cabide Organizador.jpg"},
+            {"num": "66", "nome": "Capacho Bem Vindo", "desc": "Capacho 60x40cm Net Bem Vindo", "cat": "Diversos", "estado": "Bom", "price": "R$ 60.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/163. Capacho Bem Vindo.jpg"},
+            {"num": "67", "nome": "Encosto Lombar", "desc": "Encosto Lombar Corretor Postural X-Krica", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": ""},
+            {"num": "68", "nome": "Extensão Tripolar", "desc": "Extensão Multiplicadora Tripolar 10A 1M", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/82. Extensão Tripolar.jpg"},
+            {"num": "69", "nome": "Grama Sintética", "desc": "Grama Sintética", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Grama sintética.jpeg"},
+            {"num": "70", "nome": "Lixeira Fibra Sintética", "desc": "Lixeira/Cesto Fibra Sintética Marrom", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": ""},
+            {"num": "71", "nome": "Luminária LED Armário", "desc": "Luminária LED Recarregável Armário c/ Imã", "cat": "Diversos", "estado": "Bom", "price": "R$ 60.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/162. Luminária LED Armário.jpg"},
+            {"num": "72", "nome": "Luminária Mesa RGB", "desc": "Luminária Mesa Touch RGB Sem Fio", "cat": "Diversos", "estado": "Bom", "price": "R$ 40.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/166. Luminária Mesa RGB.jpg"},
+            {"num": "73", "nome": "Mop Giratório", "desc": "Mop Giratório FlashLimp MOP8209-VA com Balde, Cabo Telescópico e Refil – Verde Água", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": ""},
+            {"num": "74", "nome": "Pasta Sanfonada", "desc": "Pasta Sanfonada A4 Dello Serena 31 Divisórias", "cat": "Diversos", "estado": "Bom", "price": "R$ 50.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/90. Pasta Sanfonada.jpg"},
+            {"num": "75", "nome": "Porta Controle MDF", "desc": "Porta Controle Remotos 3 Divisórias MDF", "cat": "Diversos", "estado": "Bom", "price": "R$ 30.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/167. Porta Controle MDF.jpg"},
+            {"num": "76", "nome": "Pulseira Apple Visita", "desc": "Pulseira Couro Apple Watch 42-45mm Visita", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": ""},
+            {"num": "77", "nome": "Suporte 2 Monitores", "desc": "Suporte Articulado 2 Monitores", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": ""},
+            {"num": "78", "nome": "Suporte Monitor Mesa (Unidade 1)", "desc": "Suporte Articulado Mesa Monitor ELG F80N", "cat": "Diversos", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/165. Suporte Monitor Mesa.jpg"},
+            {"num": "79", "nome": "Suporte Monitor Mesa (Unidade 2)", "desc": "Suporte Articulado Mesa Monitor ELG F80N", "cat": "Diversos", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/165. Suporte Monitor Mesa.jpg"},
+            {"num": "80", "nome": "Suporte Monitor Mesa (Unidade 3)", "desc": "Suporte Articulado Mesa Monitor ELG F80N", "cat": "Diversos", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/165. Suporte Monitor Mesa.jpg"},
+            {"num": "81", "nome": "Tapete Chevron", "desc": "Tapete Algodão 2,00x1,40 Chevron Off White", "cat": "Diversos", "estado": "Bom", "price": "R$ 120.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/169. Tapete Chevron.jpg"},
+            {"num": "82", "nome": "Tesoura de Grama", "desc": "Tesoura Para Grama Tramontina de Aço 9 Posições de Corte Com Cabo Plástico", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": ""},
+            {"num": "83", "nome": "Tábua de Passar", "desc": "Tábua Passar Roupa Dobrável c/ Passa Manga", "cat": "Diversos", "estado": "Bom", "price": "R$ 120.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/88. Tábua de Passar.jpg"},
+            {"num": "84", "nome": "Violão Acústico + Suporte", "desc": "Violão Acústico Clássico + Suporte", "cat": "Diversos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/105. Violão Acústico Clássico + Suporte.jpeg"},
+            {"num": "85", "nome": "Aquecedor Mondial", "desc": "Aquecedor Ar Mondial 1500W A-08", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 100.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/103. Aquecedor Mondial.jpg"},
+            {"num": "86", "nome": "Ar-Condicionado (Unidade 1)", "desc": "Philco Split Eco Inverter 9000 BTUs Frio PAC900ITFM9W", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1430.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/98. Ar Condicionado Philco.jpg"},
+            {"num": "87", "nome": "Ar-Condicionado (Unidade 2)", "desc": "Samsung Digital Inverter 8 Polos 9000 BTUs Frio AR09MVSPBGMXAZ", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1100.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/99. Ar-Condicionado Samsung.webp"},
+            {"num": "88", "nome": "Chuveiro Lorenzetti", "desc": "Chuveiro Acqua Duo Lorenzetti 127V", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 330.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/chuveiro lorenzetti.jpg"},
+            {"num": "89", "nome": "Ferro de Passar", "desc": "Ferro Passar Roupa Black+Decker 1100W", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 80.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/102. Ferro de Passar.jpg"},
+            {"num": "90", "nome": "Fogão", "desc": "Consul 5 Bocas Inox CFS5VAR Bivolt", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1250.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/97. Fogão.webp"},
+            {"num": "91", "nome": "Frigobar", "desc": "Midea 45L MRC06B1-S Inox 127V", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 560.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/FRIGOBAR.webp"},
+            {"num": "92", "nome": "Geladeira", "desc": "Consul Frost Free CRM43NK com 2 Portas Inox - 386 L – 110V", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 2230.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/92. Geladeira.webp"},
+            {"num": "93", "nome": "Lava-Louças", "desc": "Electrolux 8 Serviços Inox Compacta com Programa Eco (LE08S) 220V", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 1700.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/95. Lava-Louças.webp"},
+            {"num": "94", "nome": "Liquidificador", "desc": "Ninja Profissional 1000W Auto-iQ", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 980.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/54. Liquidificador.jpg"},
+            {"num": "95", "nome": "Micro-ondas", "desc": "Panasonic NN-ST67HSRUN - 110V, 32L, Inox", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 490.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/96. Micro-ondas.jpg"},
+            {"num": "96", "nome": "Máquina de Lavar e Secar", "desc": "LG VC5 11kg Branca CV3011WG4", "cat": "Eletrodomésticos", "estado": "Ruim", "price": "R$ 1720.0", "vendido": false, "hasPrice": true, "foto": ""},
+            {"num": "97", "nome": "Panela Elétrica (Unidade 1)", "desc": "Panela pressão elétrica Electrolux digital capacidade 6L silenciosa segura 10 travas segurança 15 receitas pré-programadas 3 níveis pressão PCC20 inox preto 220v por Rita Lobo", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 380.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/56. Panela Elétrica.jpg"},
+            {"num": "98", "nome": "Panela Elétrica (Unidade 2)", "desc": "Panela Arroz Elétrica Electrolux Rita Lobo", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 210.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/panela eletrica rita lobo de arroz.webp"},
+            {"num": "99", "nome": "Transformador 5000VA", "desc": "Transformador V&M 5000VA Bivolt", "cat": "Eletrodomésticos", "estado": "Bom", "price": "R$ 140.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/transformador.jpg"},
+            {"num": "100", "nome": "Adaptador Dual HDMI", "desc": "Adaptador USB 3.0 Dual HDMI Wavlink", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 250.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/123. Adaptador Dual HDMI.jpg"},
+            {"num": "101", "nome": "Adaptador Wi-Fi USB", "desc": "Adaptador USB Wireless Dual Band Intelbras", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 90.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/adaptador wifi.jpg"},
+            {"num": "102", "nome": "Aspirador", "desc": "Electrolux Ergorapido 2em1 ERG22", "cat": "Eletrônicos", "estado": "Regular", "price": "R$ 600.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/112. Aspirador.jpg"},
+            {"num": "103", "nome": "Cabo USB-C HDMI", "desc": "Cabo USB C para HDMI 1.8m Upgrow", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 210.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/121. Cabo USB-C HDMI.jpg"},
+            {"num": "104", "nome": "Carregador Pilhas", "desc": "Carregador Pilhas Duracell AA/AAA", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/119. Carregador Pilhas.jpg"},
+            {"num": "105", "nome": "Controle IR Smart", "desc": "Controle Infravermelho Automação Casa Inteligente", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 40.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/116. Controle IR Smart.jpg"},
+            {"num": "106", "nome": "Fechadura Digital", "desc": "Fechadura Digital Intelbras FR 101", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 180.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/12. Fechadura Digital.jpg"},
+            {"num": "107", "nome": "Fire TV Stick 4K", "desc": "Fire TV Stick 4K com Alexa", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 250.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/fire stick 4k.jpg"},
+            {"num": "108", "nome": "Fire TV Stick Lite", "desc": "Fire TV Stick Lite com Alexa", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 200.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/115. Fire TV Stick Lite.jpg"},
+            {"num": "109", "nome": "Microfone Lapela", "desc": "Microfone Lapela Boya BY-M1", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 50.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/117. Microfone Lapela.jpg"},
+            {"num": "110", "nome": "Mouse Logitech", "desc": "Mouse sem fio Logitech M170", "cat": "Eletrônicos", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/mouse logitech.jpg"},
+            {"num": "111", "nome": "Power Bank 10000mAh (Unidade 1)", "desc": "Power Bank i2GO 10000mAh USB-C", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/124. Power Bank 10000mAh.jpg"},
+            {"num": "112", "nome": "Power Bank 10000mAh (Unidade 2)", "desc": "Power Bank i2GO 10000mAh USB-C", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 110.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/124. Power Bank 10000mAh.jpg"},
+            {"num": "113", "nome": "Projetor Galaxy Star", "desc": "Projetor Galaxy Star Projector Yunsye", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 130.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/126. Projetor Galaxy Star.jpg"},
+            {"num": "114", "nome": "Relógio", "desc": "Apple Watch Series 7 45mm", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 1250.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/107. Apple Watch.webp"},
+            {"num": "115", "nome": "Ring Light", "desc": "Ring Light com Tripé Profissional", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 40.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/111. Ring Light.jpg"},
+            {"num": "116", "nome": "Roteador (Unidade 1)", "desc": "Gigabit TP-Link Archer C6 AC1200 Dual Band MU-MIMO", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 240.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/109. Roteador.jpg"},
+            {"num": "117", "nome": "Roteador (Unidade 2)", "desc": "Gigabit TP-Link Archer C6 AC1200 Dual Band MU-MIMO", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 240.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/110. Roteador.jpg"},
+            {"num": "118", "nome": "Smart Controle Wi-Fi", "desc": "Smart Controle Universal Wi-Fi Positivo", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 50.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/122. Smart Controle Wi-Fi.jpg"},
+            {"num": "119", "nome": "Smart Lâmpada RGB", "desc": "Smart Lâmpada Wi-Fi Positivo RGB", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 20.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/118. Smart Lâmpada RGB.jpg"},
+            {"num": "120", "nome": "Soundbar com Subwoofer", "desc": "LG SN4 com SPN4B-W 300W RMS", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 770.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/108. Soundbar.jpg"},
+            {"num": "121", "nome": "Televisão (Unidade 1)", "desc": "Samsung UHD 4K 75\" Crystal 4K", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 3850.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/104. Samsung UHD 4K 75 Crystal 4K.jpg"},
+            {"num": "122", "nome": "Televisão (Unidade 2)", "desc": "Philips LED 50\" UHD 4K 50PUG6513", "cat": "Eletrônicos", "estado": "Regular", "price": "R$ 1200.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/105. Televisão Phillips.jpg"},
+            {"num": "123", "nome": "Televisão (Unidade 3)", "desc": "Philco 42\" LED Roku TV PTV42G52RTV", "cat": "Eletrônicos", "estado": "Bom", "price": "R$ 1190.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/106. Philco 42 LED Roku TV PTV42G52RTV.webp"},
+            {"num": "124", "nome": "Aparador Sala Jantar", "desc": "Aparador Madeira Longo Sala Jantar", "cat": "Móveis", "estado": "Bom", "price": "R$ 500,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/74. Aparador Madeira Longo Sala Jantar.jpeg"},
+            {"num": "125", "nome": "Armário Aéreo (Suspenso)", "desc": "Armário Aéreo (Suspenso)", "cat": "Móveis", "estado": "Bom", "price": "R$ 500,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Armário aéreo 1.jpeg"},
+            {"num": "126", "nome": "Armário de Chão", "desc": "Armário de Chão", "cat": "Móveis", "estado": "Bom", "price": "R$ 600,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Armario de chao 3.jpeg"},
+            {"num": "127", "nome": "Balcão Branco (Unidade 1)", "desc": "Balcão Branco (Unidade 1)", "cat": "Móveis", "estado": "Bom", "price": "R$ 800,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Armario de chao 1.jpeg"},
+            {"num": "128", "nome": "Balcão Branco (Unidade 2)", "desc": "Balcão Branco (Unidade 2)", "cat": "Móveis", "estado": "Bom", "price": "R$ 600,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Armario de chão 2.jpeg"},
+            {"num": "129", "nome": "Cadeira Eames Branca", "desc": "Cadeira Escritório Eames Branca (Unid. 2)", "cat": "Móveis", "estado": "Bom", "price": "R$ 560.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/cadeira eames branca.jpg"},
+            {"num": "130", "nome": "Cadeira de Escritório", "desc": "Cadeira Para Escritório Presidente Giratória Ergonômica ANM312 P", "cat": "Móveis", "estado": "Bom", "price": "R$ 400.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/146. Cadeira de Escritório.jpg"},
+            {"num": "131", "nome": "Cama (Unidade 1)", "desc": "Colchão Magnético Kenko Premium Casal c/ Massagem Bluetooth King Size", "cat": "Móveis", "estado": "Regular", "price": "R$ 5340.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/132. Cama King.webp"},
+            {"num": "132", "nome": "Cama (Unidade 2)", "desc": "Cama Box Casal Queen Size", "cat": "Móveis", "estado": "Bom", "price": "R$ 1750.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/cama queen.jpeg"},
+            {"num": "133", "nome": "Carrinho Bar Madeira", "desc": "Carrinho Bar/Chá Madeira c/ Rodinhas", "cat": "Móveis", "estado": "Bom", "price": "R$ 650,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/75. Carrinho BarChá Madeira c Rodinhas.jpeg"},
+            {"num": "134", "nome": "Gaveteiro Rodinhas Escritório (Unidade 1)", "desc": "Gaveteiro Rodinhas Escritório", "cat": "Móveis", "estado": "Bom", "price": "R$ 300,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/68. Gaveteiro Rodinhas Escritório.jpeg"},
+            {"num": "135", "nome": "Gaveteiro Rodinhas Escritório (Unidade 2)", "desc": "Gaveteiro Rodinhas Escritório", "cat": "Móveis", "estado": "Bom", "price": "R$ 300,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/68. Gaveteiro Rodinhas Escritório.jpeg"},
+            {"num": "136", "nome": "Guarda-Roupa Casal", "desc": "Guarda-Roupa Casal Branco Portas Correr", "cat": "Móveis", "estado": "Bom", "price": "R$ 4.800,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/guarda roupa casal.jpeg"},
+            {"num": "137", "nome": "Luminária Tripé Madeira (Unidade 1)", "desc": "Luminária Chão Tripé Madeira (Unid. 1)", "cat": "Móveis", "estado": "Bom", "price": "VENDIDO", "vendido": true, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Luminária de chão.jpeg"},
+            {"num": "138", "nome": "Luminária Tripé Madeira (Unidade 2)", "desc": "Luminária Chão Tripé Madeira (Unid. 2)", "cat": "Móveis", "estado": "Bom", "price": "VENDIDO", "vendido": true, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/Luminária de chão.jpeg"},
+            {"num": "139", "nome": "Mesa", "desc": "KIT - Conjunto Dobrável Tabaco Mesa 70x70 com 2 Cadeiras Madeira - Disa Móveis", "cat": "Móveis", "estado": "Bom", "price": "R$ 270.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/154. Mesa Dobrável.jpg"},
+            {"num": "140", "nome": "Mesa Escrivaninha", "desc": "Mesa Escrivaninha", "cat": "Móveis", "estado": "Bom", "price": "R$ 1.400,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/mesa escrivaninha.jpeg"},
+            {"num": "141", "nome": "Mesa Externa", "desc": "", "cat": "Móveis", "estado": "Bom", "price": "R$ 630.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/34. Mesa Rústica Madeira Externa.jpeg"},
+            {"num": "142", "nome": "Mesa de Jantar", "desc": "", "cat": "Móveis", "estado": "Bom", "price": "R$ 1260.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/33. Mesa de Jantar.jpeg"},
+            {"num": "143", "nome": "Mesa em L", "desc": "Mesa Escritório em L Branca/Madeira", "cat": "Móveis", "estado": "Bom", "price": "R$ 1.400,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/mesa em L.jpeg"},
+            {"num": "144", "nome": "Mesinha Lateral Pé Palito (Unidade 1)", "desc": "Mesinha Redonda Lateral Pé Palito (Unid. 1)", "cat": "Móveis", "estado": "Bom", "price": "VENDIDO", "vendido": true, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/mesa palito.webp"},
+            {"num": "145", "nome": "Mesinha Lateral Pé Palito (Unidade 2)", "desc": "Mesinha Redonda Lateral Pé Palito (Unid. 2)", "cat": "Móveis", "estado": "Bom", "price": "R$ 140.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/mesa palito.webp"},
+            {"num": "146", "nome": "Mesinha Lateral Pé Palito (Unidade 3)", "desc": "Mesinha Redonda Lateral Pé Palito (Unid. 3)", "cat": "Móveis", "estado": "Bom", "price": "R$ 140.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/mesa palito.webp"},
+            {"num": "147", "nome": "Nicho (Unidade 1)", "desc": "Nicho (Unidade 1)", "cat": "Móveis", "estado": "Bom", "price": "R$ 200,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Nicho 1.jpeg"},
+            {"num": "148", "nome": "Nicho (Unidade 2)", "desc": "Nicho (Unidade 2)", "cat": "Móveis", "estado": "Bom", "price": "R$ 200,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Nicho 2.jpeg"},
+            {"num": "149", "nome": "Painel de Televisão", "desc": "Painel de Televisão", "cat": "Móveis", "estado": "Bom", "price": "R$ 3.800,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Painel de televisão.jpeg"},
+            {"num": "150", "nome": "Poltrona (Unidade 1)", "desc": "Cadeira de Amamentação para Mamãe Balanço com Puff -Linho Ds Home", "cat": "Móveis", "estado": "Bom", "price": "R$ 740.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/129. Poltrona Amamentação.jpg"},
+            {"num": "151", "nome": "Poltrona (Unidade 2)", "desc": "Poltrona de Massagem Louisiana com Puff Rivatti", "cat": "Móveis", "estado": "Bom", "price": "R$ 2200.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/158. Poltrona.jpg"},
+            {"num": "152", "nome": "Poltronas Externas", "desc": "Poltronas Externas", "cat": "Móveis", "estado": "Bom", "price": "Preço a ser definido", "vendido": false, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/poltronas externas.webp"},
+            {"num": "153", "nome": "Prateleira Dupla", "desc": "Prateleira Dupla", "cat": "Móveis", "estado": "Bom", "price": "R$ 200,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Prateleira.jpeg"},
+            {"num": "154", "nome": "Prateleira Simples", "desc": "Prateleira Simples", "cat": "Móveis", "estado": "Bom", "price": "R$ 100,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/Prateleira 2.jpeg"},
+            {"num": "155", "nome": "Prateleira de Apoio de Sofá (Unidade 1)", "desc": "Prateleira de Apoio de Sofá (Unidade 1)", "cat": "Móveis", "estado": "Bom", "price": "R$ 70,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/mesa suporte lateral sofa.webp"},
+            {"num": "156", "nome": "Prateleira de Apoio de Sofá (Unidade 2)", "desc": "Prateleira de Apoio de Sofá (Unidade 2)", "cat": "Móveis", "estado": "Bom", "price": "R$ 70,00", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/mesa suporte lateral sofa.webp"},
+            {"num": "157", "nome": "Puff Descanso (Unidade 1)", "desc": "Puff Descanso Poltrona (Unid. 1)", "cat": "Móveis", "estado": "Bom", "price": "VENDIDO", "vendido": true, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/52. Puff Descanso Poltrona (un 1).jpeg"},
+            {"num": "158", "nome": "Puff Descanso (Unidade 2)", "desc": "Puff Descanso Poltrona (Unid. 2)", "cat": "Móveis", "estado": "Bom", "price": "VENDIDO", "vendido": true, "hasPrice": false, "foto": "Fotos Novas/Nova pasta/52. Puff Descanso Poltrona (un 2).jpeg"},
+            {"num": "159", "nome": "Sofá", "desc": "Sofá", "cat": "Móveis", "estado": "Ruim", "price": "R$ 950.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/sofa.jpeg"},
+            {"num": "160", "nome": "Sofá Redondo Externo", "desc": "Sofá Redondo Fibra Sintética Externa", "cat": "Móveis", "estado": "Bom", "price": "R$ 2100.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/sofa redondo externo.webp"},
+            {"num": "161", "nome": "Tapete", "desc": "Tapete São Carlos 150x200 cm Herat Export Siena - Cinza", "cat": "Móveis", "estado": "Bom", "price": "R$ 340.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/157. Tapete.jpg"},
+            {"num": "162", "nome": "Cama Túnel Gato", "desc": "Cama Túnel Redonda Gato Feltro", "cat": "Pet", "estado": "Bom", "price": "R$ 70.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/168. Cama Túnel Gato.jpg"},
+            {"num": "163", "nome": "Coleira Peitoral Pet", "desc": "Coleira Peitoral Select Pet c/ Guia", "cat": "Pet", "estado": "Bom", "price": "R$ 40.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/171. Coleira Peitoral Pet.jpg"},
+            {"num": "164", "nome": "Escova Vapor Gatos (Unidade 1)", "desc": "Escova Vapor Gatos 3em1 Steamy Cat", "cat": "Pet", "estado": "Bom", "price": "R$ 10.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/174. Escova Vapor Gatos.jpg"},
+            {"num": "165", "nome": "Escova Vapor Gatos (Unidade 2)", "desc": "Escova Vapor Gatos 3em1 Steamy Cat", "cat": "Pet", "estado": "Bom", "price": "R$ 10.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/175. Escova Vapor Gatos.jpg"},
+            {"num": "166", "nome": "Guia Retrátil Pet", "desc": "Guia Retrátil Coleira Pet 5m", "cat": "Pet", "estado": "Bom", "price": "R$ 20.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/170. Guia Retrátil Pet.jpg"},
+            {"num": "167", "nome": "Mochila Gatos (Unidade 1)", "desc": "Mochila Transportadora Gatos Luffylive", "cat": "Pet", "estado": "Bom", "price": "R$ 70.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/172. Mochila Gatos.jpg"},
+            {"num": "168", "nome": "Mochila Gatos (Unidade 2)", "desc": "Mochila Transportadora Gatos Luffylive", "cat": "Pet", "estado": "Bom", "price": "R$ 70.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/173. Mochila Gatos.jpg"},
+            {"num": "169", "nome": "Torre Arranhador Gatos", "desc": "Torre Arranhador Gatos Pelúcia", "cat": "Pet", "estado": "Bom", "price": "R$ 140.0", "vendido": false, "hasPrice": true, "foto": "Fotos Novas/Nova pasta/torre aranhador gatos.webp"}
         ];
 
         // Category emojis
@@ -657,6 +612,7 @@
             "Academia": "💪",
             "Bebê/Infantil": "👶",
             "Cozinha": "🍳",
+            "Decoração": "🎨",
             "Diversos": "📦",
             "Eletrodomésticos": "🏠",
             "Eletrônicos": "📺",
@@ -669,6 +625,7 @@
             "Academia": "#4CAF50",
             "Bebê/Infantil": "#FF9800",
             "Cozinha": "#2196F3",
+            "Decoração": "#8D6E63",
             "Diversos": "#9C27B0",
             "Eletrodomésticos": "#F44336",
             "Eletrônicos": "#00BCD4",
@@ -679,9 +636,9 @@
         // Filter items by section
         function filterItemsBySection(section) {
             if (section === 'priced') {
-                return items.filter(item => item.ok === true && item.vendido === false);
+                return items.filter(item => item.hasPrice === true && item.vendido === false);
             } else if (section === 'pending') {
-                return items.filter(item => item.ok === false && item.vendido === false);
+                return items.filter(item => item.hasPrice === false && item.vendido === false);
             } else if (section === 'sold') {
                 return items.filter(item => item.vendido === true);
             }
@@ -691,7 +648,7 @@
         // Get state badge class
         function getStateBadgeClass(estado) {
             if (estado === 'Bom' || estado === 'Boa') return 'badge-state';
-            if (estado === 'Médio' || estado === 'Média') return 'badge-state medio';
+            if (estado === 'Regular') return 'badge-state medio';
             if (estado === 'Ruim') return 'badge-state ruim';
             return 'badge-state';
         }
@@ -713,11 +670,12 @@
                 priceClass += ' sold';
             }
 
+            let soldOverlay = isSold ? '<div class="sold-overlay"><span>VENDIDO</span></div>' : '';
             let fotoHtml = '';
             if (item.foto) {
-                fotoHtml = `<div class="card-image"><img src="${item.foto}" alt="${item.nome}" loading="lazy" onerror="this.parentElement.innerHTML='<span class=\'no-image\'>📷</span>'"></div>`;
+                fotoHtml = `<div class="card-image">${soldOverlay}<img src="${item.foto}" alt="${item.nome}" loading="lazy" onerror="this.parentElement.innerHTML='<span class=\'no-image\'>📷</span>'"></div>`;
             } else {
-                fotoHtml = `<div class="card-image"><span class="no-image">📷</span></div>`;
+                fotoHtml = `<div class="card-image">${soldOverlay}<span class="no-image">📷</span></div>`;
             }
 
             return `
@@ -795,8 +753,8 @@
         // Update summary
         function updateSummary() {
             const totalItems = items.length;
-            const pricedItems = items.filter(i => i.ok === true && i.vendido === false).length;
-            const pendingItems = items.filter(i => i.ok === false && i.vendido === false).length;
+            const pricedItems = items.filter(i => i.hasPrice === true && i.vendido === false).length;
+            const pendingItems = items.filter(i => i.hasPrice === false && i.vendido === false).length;
             const soldItems = items.filter(i => i.vendido === true).length;
 
             document.getElementById('total-count').textContent = totalItems;
@@ -818,8 +776,8 @@
             });
 
             // Split into sections
-            const pricedItems = filteredItems.filter(i => i.ok === true && i.vendido === false);
-            const pendingItems = filteredItems.filter(i => i.ok === false && i.vendido === false);
+            const pricedItems = filteredItems.filter(i => i.hasPrice === true && i.vendido === false);
+            const pendingItems = filteredItems.filter(i => i.hasPrice === false && i.vendido === false);
             const soldItems = filteredItems.filter(i => i.vendido === true);
 
             // Render each section
